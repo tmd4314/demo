@@ -8,6 +8,7 @@ import Navbar from './bar/Navbar';
 import HomePage from './pages/Homepage';
 import Login from './pages/Login';
 // import Fire from './pages/Fire';
+// import Weather from './pages/Weather';
 
 function App() {
   return (
