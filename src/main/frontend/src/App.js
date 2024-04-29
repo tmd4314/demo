@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import Sidebar from './bar/Sidebar';
 import Navbar from './bar/Navbar';
 import HomePage from './pages/Homepage';
+import Login from './pages/Login';
 // import Fire from './pages/Fire';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Container>
             <Routes>
               <Route exact path="/" element={<HomePage />} />
+              <Route exact path="/login" element={<Login />} />
             </Routes>
           </Container>
         </div>
