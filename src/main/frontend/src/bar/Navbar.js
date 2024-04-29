@@ -9,7 +9,7 @@ function NavbarComponent() {
       <Container fluid>
         <Navbar.Brand href="#home">산악인</Navbar.Brand>
         <Nav className="me-auto">
-          <Form inline>
+          <Form>
             <Row>
               <Col xs="auto">
                 <Form.Control
