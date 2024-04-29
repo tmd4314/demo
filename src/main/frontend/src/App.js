@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import Sidebar from './bar/Sidebar';
 import Navbar from './bar/Navbar';
 import HomePage from './pages/Homepage';
+// import Fire from './pages/Fire';
 
 function App() {
   return (
