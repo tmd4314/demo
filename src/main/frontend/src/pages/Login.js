@@ -18,8 +18,8 @@ function Login() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-            <Button variant="primary" type="로그인">
-                Submit
+            <Button variant="primary" type="submit">
+                로그인
             </Button>
         </Form>
     );
