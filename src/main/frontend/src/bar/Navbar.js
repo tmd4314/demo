@@ -1,13 +1,13 @@
 // Navbar.js
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, NavDropdown, Form, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; // React Router의 Link를 가져옵니다.
 
 function NavbarComponent() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary border-bottom">
       <Container fluid>
-        <Navbar.Brand href="#home">산악인</Navbar.Brand>
+        <Navbar.Brand href="/">산악인</Navbar.Brand>
         <Nav className="me-auto">
           <Form>
             <Row>
@@ -26,7 +26,7 @@ function NavbarComponent() {
         </Nav>
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link href="/login">로그인</Nav.Link>
+            <Link to="/login" className="nav-link">로그인</Link> {/* 로그인 링크를 React Router의 Link로 변경 */}
             <Nav.Link href="#link">회원가입</Nav.Link>
             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">회원 수정</NavDropdown.Item>
