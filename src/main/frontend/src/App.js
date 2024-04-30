@@ -7,8 +7,8 @@ import Sidebar from './bar/Sidebar';
 import Navbar from './bar/Navbar';
 import HomePage from './pages/Homepage';
 import Login from './pages/Login';
-//import Fire from './pages/Fire';
-// import Weather from './pages/Weather';
+import Forecast from './pages/Forecast';
+
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/login" element={<Login />} /> {/* 로그인 페이지 경로 */}
+              <Route exact path="/forecast" element={<Forecast />} /> {/* 예보 페이지 경로 */}
             </Routes>
           </Container>
         </div>
