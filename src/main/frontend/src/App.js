@@ -7,7 +7,7 @@ import Sidebar from './bar/Sidebar';
 import Navbar from './bar/Navbar';
 import HomePage from './pages/Homepage';
 import Login from './pages/Login';
-import Join from './pages/Join';
+import Signup from './pages/Signup';
 import Forecast from './pages/Forecast';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/forecast" element={<Forecast />} />
-              <Route exact path="/join" element={<Join />} />
+              <Route exact path="/signup" element={<Signup />} />
             </Routes>
           </Container>
         </div>
