@@ -5,11 +5,6 @@
     padding: 20px;
 }
 
-.button-container {
-    display: flex;
-    justify-content: space-between; /* 두 버튼을 반반씩 배치 */
-    margin-top: 20px; /* 버튼과 입력 필드 사이의 간격 조정 */
-}
 
 @media (max-width: 767px) {
     .login-box {

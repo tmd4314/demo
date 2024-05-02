@@ -9,11 +9,11 @@ function Login() {
             <h3>로그인</h3>
             <div>
                 <div className="form-item">
-                    <Form.Control type="username" placeholder="아이디" />
+                    <Form.Control type="username" placeholder="아이디"/>
                 </div>
                 <div className="form-item">
-                    <Form.Control type="password" placeholder="비밀번호" />
-                </div>  
+                    <Form.Control type="password" placeholder="비밀번호"/>
+                </div>
                 <div className="button-container">
                     <Button variant="primary" type="submit" id='loginBtn'>로그인</Button>
                     <a href='/join'>
@@ -22,7 +22,12 @@ function Login() {
                 </div>
             </div>
         </div>
-    );
+    <div>
+        <p>hello
+        </p>
+    </div>
+)
+    ;
 }
 
 export default Login;
