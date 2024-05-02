@@ -22,10 +22,6 @@ function Login() {
                 </div>
             </div>
         </div>
-    <div>
-        <p>hello
-        </p>
-    </div>
 )
     ;
 }
