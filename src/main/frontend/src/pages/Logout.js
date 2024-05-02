@@ -7,7 +7,7 @@ const Logout = () => {
   const history =  useNavigate();
 
   const handleLogout = () => {
-    axios.post('/api/user/logout')
+    axios.post('/api/logout')
       .then(response => {
         console.log('Logout successful');
         // 로그아웃 후 홈 페이지로 이동

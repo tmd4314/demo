@@ -45,10 +45,6 @@ function Join() {
                         <Form.Control type="email" placeholder="01012345678" />
                     </div>
                 </div>
-                <div>
-                    <p>hello
-                    </p>
-                </div>
                 
             </div>
             <Button variant="primary">회원가입</Button>
