@@ -3,6 +3,7 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown, Form, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; // React Router의 Link를 가져옵니다.
 import Logout from '../pages/Logout.js';
+
 function NavbarComponent() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary border-bottom">
@@ -28,10 +29,10 @@ function NavbarComponent() {
           <Nav>
             <Link to="/api/login" className="nav-link">로그인</Link>
             <Link to="/api/signup" className="nav-link">회원가입</Link>
-            <NavDropdown title="마이페이지" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">회원 수정</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">회원 탈퇴</NavDropdown.Item>
-                <NavDropdown.Divider />
+          <NavDropdown title="마이페이지" id="basic-nav-dropdown">
+            <Link to="/mypage" className="dropdown-item">회원 수정</Link>
+            <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
+            <NavDropdown.Divider />
                 <Logout />
             </NavDropdown>
           </Nav>
