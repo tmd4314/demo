@@ -8,22 +8,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String username;
 
-    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
+    @Column(unique = true)
     private String email;
 
     // 추가적인 필드 및 관계 설정 가능

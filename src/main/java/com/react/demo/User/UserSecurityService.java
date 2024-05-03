@@ -30,8 +30,11 @@ public class UserSecurityService implements UserDetailsService {
         }
         User user = userOptional.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(), authorities);
+        if ("api".equals(username)) {
+            authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
+        } else {
+            authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
+        }
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 }

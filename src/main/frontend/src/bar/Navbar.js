@@ -26,8 +26,8 @@ function NavbarComponent() {
         </Nav>
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
-            <Link to="/login" className="nav-link">로그인</Link> {/* 로그인 링크를 React Router의 Link로 변경 */}
-            <Nav.Link href="/signup">회원가입</Nav.Link>
+            <Link to="/api/login" className="nav-link">로그인</Link>
+            <Link to="/api/signup" className="nav-link">회원가입</Link>
             <NavDropdown title="마이페이지" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">회원 수정</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">회원 탈퇴</NavDropdown.Item>
