@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -52,7 +52,7 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/signup").build();
     }
-    @GetMapping("/api")
+    @GetMapping("/login")
     public ResponseEntity<Object> login() {
         return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/login").build();
     }

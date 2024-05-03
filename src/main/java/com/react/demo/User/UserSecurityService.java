@@ -30,7 +30,7 @@ public class UserSecurityService implements UserDetailsService {
         }
         User user = userOptional.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
-        if ("api".equals(username)) {
+        if ("user".equals(username)) {
             authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
         } else {
             authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));

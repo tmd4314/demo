@@ -6,7 +6,7 @@ function HomePage() {
   const [hello, setHello] = useState('');
 
         useEffect(() => {
-          axios.get('/api/homepage')
+          axios.get('/user/homepage')
             .then(response => setHello(response.data))
             .catch(error => console.log(error))
         }, []);

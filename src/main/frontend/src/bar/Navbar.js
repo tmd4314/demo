@@ -27,8 +27,8 @@ function NavbarComponent() {
         </Nav>
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
-            <Link to="/api/login" className="nav-link">로그인</Link>
-            <Link to="/api/signup" className="nav-link">회원가입</Link>
+            <Link to="/user/login" className="nav-link">로그인</Link>
+            <Link to="/user/signup" className="nav-link">회원가입</Link>
           <NavDropdown title="마이페이지" id="basic-nav-dropdown">
             <Link to="/mypage" className="dropdown-item">회원 수정</Link>
             <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>

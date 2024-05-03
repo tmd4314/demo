@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomepageController {
 
-    @GetMapping("/api/homepage")
+    @GetMapping("/user/homepage")
     public String test() {
         return "나중에 불러올데이터입니다.";
     }
