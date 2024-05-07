@@ -13,7 +13,7 @@ public class CsrfController {
     @GetMapping("/api/csrf")
     public CsrfToken getCsrfToken(HttpServletRequest request) {
         CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        System.out.println("csrfToken = " + csrfToken);
+        System.out.println("csrfToken = " + csrfToken);// 토큰 무엇인지 찍어내는것입니다.
         return csrfToken;
     }
 }

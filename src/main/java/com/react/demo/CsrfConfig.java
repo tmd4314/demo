@@ -10,7 +10,7 @@ public class CsrfConfig {
     @Bean
     public CsrfTokenRepository csrfTokenRepository() {
         HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-        repository.setHeaderName("X-CSRF-TOKEN"); // 헤더 이름 설정
+        repository.setHeaderName("X-CSRF-TOKEN"); // 헤더 이름 설정입낟.
         return repository;
     }
 }
