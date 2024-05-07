@@ -46,7 +46,6 @@ public class SecurityConfig {
                         .invalidateHttpSession(true))
 //                .csrf(csrf -> csrf
 //                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-//                .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
         ;
         return http.build();
     }
@@ -61,17 +60,4 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    // CsrfHeaderFilter 클래스 구현
-//    public class CsrfHeaderFilter extends OncePerRequestFilter {
-//        @Override
-//        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-//                throws ServletException, IOException {
-//            CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-//            if (csrf != null) {
-//                // 클라이언트가 CSRF 토큰을 읽을 수 있도록 응답 헤더에 추가
-//                response.setHeader("X-CSRF-TOKEN", csrf.getToken());
-//            }
-//            filterChain.doFilter(request, response);
-//        }
-//    }
 }

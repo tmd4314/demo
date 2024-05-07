@@ -1,7 +1,7 @@
 package com.react.demo.User;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,16 +15,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String username;
 
     private String password;
 
-    @Column(unique = true)
     private String phoneNumber;
 
-    @Column(unique = true)
     private String email;
+
+    private LocalDateTime createddt;
 
     // 추가적인 필드 및 관계 설정 가능
 }

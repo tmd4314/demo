@@ -21,7 +21,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/user/login" element={<Login />} />
-              <Route exact path="/forecast" element={<Forecast />} />
+              <Route exact path="/user/forecast" element={<Forecast />} />
               <Route exact path="/user/signup" element={<Signup />} />
             </Routes>
           </Container>
