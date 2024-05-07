@@ -4,8 +4,7 @@ import axios from 'axios';
 function Forecast() {
     const [localAreas, setLocalAreas] = useState('');
     const [stnIds, setStnIds] = useState('');
-    const [localAreasJson, setLocalAreasJson] = useState(null);
-    const [weatherJson, setWeatherJson] = useState(null);
+    const [jsonData, setJsonData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -22,7 +21,7 @@ function Forecast() {
         try {
             setLoading(true);
             const response = await axios.get(apiUrl, { params });
-            return response.data;
+            setJsonData(response.data);
         } catch (error) {
             setError(error);
         } finally {
@@ -30,11 +29,11 @@ function Forecast() {
         }
     };
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         let apiUrl, params;
         if (event.target.name === 'fireForm') {
-            apiUrl = 'http://apis.data.go.kr/1400377/forestPoint/forestPointListSidoSearch';
+            apiUrl = '/forestApi/forestPointListSidoSearch';
             params = {
                 serviceKey: '+rjPlspLDATUPFxhEJF1VV7y793cI5CJKC9dPXTGIVLzpvYzxUTpoOUshFXdLNaHDdTQC7I8ftzGwD3qrHFliA==',
                 pageNo: 1,
@@ -43,10 +42,8 @@ function Forecast() {
                 localAreas: localAreas,
                 excludeForecast: 0
             };
-            const data = await fetchData(apiUrl, params);
-            setLocalAreasJson(data);
         } else if (event.target.name === 'weatherForm') {
-            apiUrl = 'http://apis.data.go.kr/1360000/AsosHourlyInfoService/getWthrDataList';
+            apiUrl = '/weatherApi/getWthrDataList';
             params = {
                 serviceKey: '+rjPlspLDATUPFxhEJF1VV7y793cI5CJKC9dPXTGIVLzpvYzxUTpoOUshFXdLNaHDdTQC7I8ftzGwD3qrHFliA==',
                 pageNo: 1,
@@ -60,9 +57,8 @@ function Forecast() {
                 endHh: '01',
                 stnIds: stnIds
             };
-            const data = await fetchData(apiUrl, params);
-            setWeatherJson(data);
         }
+        fetchData(apiUrl, params);
     };
 
     if (loading) return <p>Loading...</p>;
@@ -70,40 +66,32 @@ function Forecast() {
 
     return (
         <div>
-            <div style={{ display: 'flex' }}>
-                <div style={{ marginRight: '20px' }}>
-                    <h1>Search for Local Areas</h1>
-                    <form onSubmit={handleSubmit} name="fireForm">
-                        <label>
-                            Enter Local Areas (e.g., 01,02):
-                            <input type="text" name="localAreas" value={localAreas} onChange={handleChange} />
-                        </label>
-                        <button type="submit">Search</button>
-                    </form>
-                    {localAreasJson && (
-                        <div>
-                            <h2>Local Areas JSON Data:</h2>
-                            <pre>{JSON.stringify(localAreasJson, null, 2)}</pre>
-                        </div>
-                    )}
-                </div>
-                <div>
-                    <h1>Search for Weather</h1>
-                    <form onSubmit={handleSubmit} name="weatherForm">
-                        <label>
-                            Enter Station Number:
-                            <input type="text" name="stnIds" value={stnIds} onChange={handleChange} />
-                        </label>
-                        <button type="submit">Search</button>
-                    </form>
-                    {weatherJson && (
-                        <div>
-                            <h2>Weather JSON Data:</h2>
-                            <pre>{JSON.stringify(weatherJson, null, 2)}</pre>
-                        </div>
-                    )}
-                </div>
+            <div>
+                <h1>Search for Local Areas</h1>
+                <form onSubmit={handleSubmit} name="fireForm">
+                    <label>
+                        Enter Local Areas (e.g., 01,02):
+                        <input type="text" name="localAreas" value={localAreas} onChange={handleChange} />
+                    </label>
+                    <button type="submit">Search</button>
+                </form>
             </div>
+            <div>
+                <h1>Search for Weather</h1>
+                <form onSubmit={handleSubmit} name="weatherForm">
+                    <label>
+                        Enter Station Number:
+                        <input type="text" name="stnIds" value={stnIds} onChange={handleChange} />
+                    </label>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            {jsonData && (
+                <div>
+                    <h2>JSON Data:</h2>
+                    <pre>{JSON.stringify(jsonData, null, 2)}</pre>
+                </div>
+            )}
         </div>
     );
 }
