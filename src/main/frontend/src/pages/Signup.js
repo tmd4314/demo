@@ -1,63 +1,7 @@
-//import React, { useState } from 'react';
-//import axios from 'axios';
-//
-//function Signup() {
-//  const [user, setUser] = useState({
-//    username: '',
-//    password: '',
-//    phoneNumber: '',
-//    email: ''
-//  });
-//
-//  const handleChange = (e) => {
-//    const { name, value } = e.target;
-//    setUser({ ...user, [name]: value });
-//  };
-//
-//  const handleSubmit = async (e) => {
-//    e.preventDefault();
-//    let headers = {};
-//
-//    try {
-//      const res = await axios.get('/api/csrf');
-//      console.log('CSRF 가져옴');
-//      if (res.status === 200) {
-//        console.log(res.data);
-//        const csrfToken = res.data.token;
-//        localStorage.setItem('csrfToken', csrfToken);
-//        headers['X-XSRF-TOKEN'] = csrfToken;
-//      }
-//    } catch (error) {
-//      console.log('csrf failed:', error);
-//    }
-//
-//
-//    try {
-//      const res = await axios.post('/user/signup', user, { headers: headers });
-//      console.log('Signup successful');
-//      if (res.status === 200) {
-//        console.log(res.data);
-//        console.log("어쨋든 성공");
-//      }
-//    } catch (error) {
-//      console.log('Signup failed:', error);
-//    }
-//
-//
-//  };
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Signup() {
-
-//  const [user, setUser] = useState({
-//    username: '',
-//    password: '',
-//    phoneNumber: '',
-//    email: ''
-//  });
-
 
   const [csrfToken, setCsrfToken] = useState('');
   const [formData, setFormData] = useState({
@@ -72,8 +16,6 @@ function Signup() {
     axios.get('/api/csrf')
       .then(response => {
         setCsrfToken(response.data.token); // CSRF 토큰 저장
-        console.log(response.data);
-        console.log(response.data.token);
       })
       .catch(error => {
         console.error('Error fetching CSRF token:', error);

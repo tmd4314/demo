@@ -20,9 +20,9 @@ function App() {
           <Container>
             <Routes>
               <Route exact path="/" element={<HomePage />} />
-              <Route exact path="/api/login" element={<Login />} />
+              <Route exact path="/user/login" element={<Login />} />
               <Route exact path="/forecast" element={<Forecast />} />
-              <Route exact path="/api/signup" element={<Signup />} />
+              <Route exact path="/user/signup" element={<Signup />} />
             </Routes>
           </Container>
         </div>

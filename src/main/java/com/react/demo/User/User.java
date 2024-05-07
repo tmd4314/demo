@@ -20,7 +20,7 @@ public class User {
 
     private String password;
 
-    @Column(nullable = false)
+    @Column(unique = true)
     private String phoneNumber;
 
     @Column(unique = true)

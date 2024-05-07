@@ -20,6 +20,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import java.io.IOException;
 
 @Configuration
@@ -30,6 +31,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
                 .headers((headers) -> headers
@@ -42,9 +44,9 @@ public class SecurityConfig {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true))
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-                .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
+//                .csrf(csrf -> csrf
+//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+//                .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
         ;
         return http.build();
     }
@@ -60,16 +62,16 @@ public class SecurityConfig {
     }
 
     // CsrfHeaderFilter 클래스 구현
-    public class CsrfHeaderFilter extends OncePerRequestFilter {
-        @Override
-        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-                throws ServletException, IOException {
-            CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-            if (csrf != null) {
-                // 클라이언트가 CSRF 토큰을 읽을 수 있도록 응답 헤더에 추가
-                response.setHeader("X-CSRF-TOKEN", csrf.getToken());
-            }
-            filterChain.doFilter(request, response);
-        }
-    }
+//    public class CsrfHeaderFilter extends OncePerRequestFilter {
+//        @Override
+//        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+//                throws ServletException, IOException {
+//            CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+//            if (csrf != null) {
+//                // 클라이언트가 CSRF 토큰을 읽을 수 있도록 응답 헤더에 추가
+//                response.setHeader("X-CSRF-TOKEN", csrf.getToken());
+//            }
+//            filterChain.doFilter(request, response);
+//        }
+//    }
 }
