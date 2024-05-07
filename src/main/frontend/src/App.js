@@ -9,6 +9,8 @@ import HomePage from './pages/Homepage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Forecast from './pages/Forecast';
+import StatFire from './pages/StatFire';
+import Mountain from './pages/Mountain';
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/user/login" element={<Login />} />
-              <Route exact path="/forecast" element={<Forecast />} />
+              <Route exact path="/user/forecast" element={<Forecast />} />
               <Route exact path="/user/signup" element={<Signup />} />
+              <Route exact path="/user/statfire" element={<StatFire />} />
+              <Route exact path="/user/mountain" element={<Mountain />} />
             </Routes>
           </Container>
         </div>
