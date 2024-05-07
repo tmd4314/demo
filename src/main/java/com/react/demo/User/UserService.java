@@ -24,11 +24,6 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(password));
         user.setPhoneNumber(phoneNumber);
         user.setCreateddt(LocalDateTime.now()); // 생성 일시 설정
-
-        this.username = username;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-
         return userRepository.save(user);
     }
 
@@ -36,12 +31,4 @@ public class UserService {
         return userRepository.findByUsername(username).isPresent();
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
