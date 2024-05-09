@@ -2,54 +2,59 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
+  const [formData, setFormData] = useState({
+    userid: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault(); // 폼 제출 시 페이지 리로드 방지
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      // 서버에 로그인 요청
-      const response = await axios.post('/user/login', { username, password });
-      // 로그인 성공 시 토큰 저장
-      localStorage.setItem('authToken', response.data.token);
-      // 여기서 로그인 성공 후 처리를 추가할 수 있음 (예: 페이지 전환)
-      console.log('로그인 성공!');
+      const response = await axios.post('/user/login', formData);
+      // 로그인 성공 시
+      console.log('Login successful:', formData);
+      // 예를 들어, 로그인 성공 후 메인 페이지로 이동
+      // window.location.href = '/';
     } catch (error) {
-      // 로그인 실패 시 오류 메시지 설정
-      if (error.response) {
-        setLoginError(error.response.data.message);
-      } else {
-        setLoginError('로그인 요청에 실패했습니다.');
-      }
-      console.log('로그인 실패:', loginError);
+      console.error('Login failed:', error);
+      // 로그인 실패 시 에러 메시지 표시
+      setError('사용자 ID 또는 비밀번호를 확인해 주세요.');
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="username">사용자 이름:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    <div className="container my-3">
+      <form onSubmit={handleSubmit}>
+        {error && (
+          <div className="alert alert-danger" role="alert">
+            {error}
+          </div>
+        )}
+        {successMessage && (
+          <div className="alert alert-success" role="alert">
+            {successMessage}
+          </div>
+        )}
+        <div className="mb-3">
+          <label htmlFor="userid" className="form-label">사용자 ID</label>
+          <input type="text" name="userid" id="userid" className="form-control" value={formData.userid} onChange={handleChange} />
         </div>
-        <div>
-          <label htmlFor="password">비밀번호:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">비밀번호</label>
+          <input type="password" name="password" id="password" className="form-control" value={formData.password} onChange={handleChange} />
         </div>
-        <button type="submit">로그인</button>
+        <button type="submit" className="btn btn-primary">로그인</button>
       </form>
-      {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
     </div>
   );
 }

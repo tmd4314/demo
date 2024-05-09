@@ -1,11 +1,12 @@
 package com.react.demo.User;
 
+import com.react.demo.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -13,22 +14,17 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    private String username;
-    private String phoneNumber;
-    private String email;
 
-    public User create(String username, String email, String password, String phoneNumber) {
+    public User create(UserCreateForm userCreateForm) {
         User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setPhoneNumber(phoneNumber);
-        user.setCreateddt(LocalDateTime.now()); // 생성 일시 설정
+        user.setUserid(userCreateForm.getUserid());
+        user.setPassword(passwordEncoder.encode(userCreateForm.getPassword()));
+        user.setUsername(userCreateForm.getUsername());
+        user.setPhoneNumber(userCreateForm.getPhoneNumber());
+        user.setEmail(userCreateForm.getEmail());
+        user.setCreated_dt(LocalDateTime.now()); // 생성 일시 설정
         return userRepository.save(user);
     }
 
-    public boolean existsByUsername(String username) {
-        return userRepository.findByUsername(username).isPresent();
-    }
 
 }

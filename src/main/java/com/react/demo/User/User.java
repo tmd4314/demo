@@ -15,15 +15,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    @Column(unique = true)
+    private String userid;
 
     private String password;
 
+    @Column(unique = true)
+    private String username;
+
     private String phoneNumber;
 
+    @Column(unique = true)
     private String email;
 
-    private LocalDateTime createddt;
+    private LocalDateTime created_dt;
 
-    // 추가적인 필드 및 관계 설정 가능
 }
