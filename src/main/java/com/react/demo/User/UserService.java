@@ -26,5 +26,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-
+    public User getUser(String userid) {
+        Optional<User> user = this.userRepository.findByUserid(userid);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new DataNotFoundException("고객정보가 없다.");
+        }
+    }
 }
