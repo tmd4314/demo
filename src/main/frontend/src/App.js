@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Forecast from './pages/Forecast';
 import StatFire from './pages/StatFire';
 import Mountain from './pages/Mountain';
+import Weather from './pages/Weather';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route exact path="/user/signup" element={<Signup />} />
               <Route exact path="/user/statfire" element={<StatFire />} />
               <Route exact path="/user/mountain" element={<Mountain />} />
+              <Route exact path="/user/weather" element={<Weather/>} />
             </Routes>
           </Container>
         </div>
