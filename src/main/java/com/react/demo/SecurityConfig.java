@@ -37,16 +37,15 @@ public class SecurityConfig {
                 .headers((headers) -> headers
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(
                                 XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
-                .formLogin((formLogin) -> formLogin
-                        .failureUrl("/user/login?error")
-                        .loginPage("/user/login")
-                        .defaultSuccessUrl("/"))
-                .logout((logout)->logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                        .logoutSuccessUrl("/")
-                        .invalidateHttpSession(true))
+//                .logout((logout)->logout
+//                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+//                        .logoutSuccessUrl("/")
+//                        .invalidateHttpSession(true))
 //                .csrf(csrf -> csrf
-//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+//                        .ignoringRequestMatchers("/user/login") // 로그인 폼은 CSRF 보호에서 제외
+//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+//                )
+
         ;
         return http.build();
     }

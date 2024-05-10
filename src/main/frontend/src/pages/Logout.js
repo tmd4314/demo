@@ -1,26 +1,24 @@
 import React from 'react';
-import { NavDropdown } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Logout = () => {
-  const history =  useNavigate();
-
+function Logout() {
   const handleLogout = () => {
-    axios.post('/api/logout')
+    axios.post('/user/logout')
       .then(response => {
-        console.log('Logout successful');
-        // 로그아웃 후 홈 페이지로 이동
-        history.push('/');
+        // 로그아웃 성공 시 처리할 코드
+//        window.alert('로그아웃 하였습니다.');
+//        window.location.href = '/';
+        console.log(response);
       })
       .catch(error => {
-        console.error('Error logging out:', error);
+        // 로그아웃 실패 시 처리할 코드
+        console.error('Logout failed:', error);
       });
   };
 
   return (
-    <NavDropdown.Item onClick={handleLogout}>로그아웃</NavDropdown.Item>
+    <button onClick={handleLogout}>로그아웃</button>
   );
-};
+}
 
 export default Logout;

@@ -65,10 +65,8 @@ function Signup() {
           'Content-Type': 'application/json'
         }
       });
-//        window.alert('회원가입을 축하드립니다.');
-//        window.location.href = '/';
-        console.log(response);
-        console.log(userCreateForm)
+        window.alert('회원가입을 축하드립니다.');
+        window.location.href = '/';
     } catch (error) {
       console.error('Signup failed:', error);
     }

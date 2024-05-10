@@ -11,18 +11,18 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-      axios.post('/user/login', formData) // 올바른 URL 사용
-        .then(response => {
-          console.log(response);
-          console.log('Login successful:', formData); // 로그인 성공 시
-          // 예를 들어, 로그인 성공 후 메인 페이지로 이동
-          //window.location.href = '/';
-        })
-        .catch(error => {
-          console.error('Login failed:', error); // 로그인 실패 시 에러 메시지 표시
-          setError('사용자 ID 또는 비밀번호를 확인해 주세요.'); // 여기에는 실제로 setError 함수가 정의되어 있어야 합니다.
-        });
+      try {
+        const response = await axios.post('/user/login', formData);
+        console.log(response.data);
+       window.alert('로그인을 하였습니다.');
+       window.location.href = '/';
+        // 로그인 성공 시 처리
+      } catch (error) {
+        console.error('Login failed:', error);
+        setError('사용자 이름 또는 비밀번호를 확인하세요.');
+      }
     };
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
