@@ -2,48 +2,67 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
 function HomePage() {
-  const [hello, setHello] = useState('');
-  const [weatherInfo, setWeatherInfo] = useState('');
+      const [weatherData, setWeatherData] = useState([]);
+      const [loading, setLoading] = useState(true);
+      const [error, setError] = useState(null);
+       useEffect(() => {
+           const fetchData = async () => {
+               try {
+                   const response = await axios.get('https://api.openweathermap.org/data/2.5/forecast?lat=33.360949&lon=126.529803&appid=f5cee2776b05720a81722527b6bf4a4e&lang=kr&units=metric');
+                   const temp = response.data;
 
-        useEffect(() => {
-          axios.get('/user/homepage')
-            .then(response => setHello(response.data))
-            .catch(error => console.log(error))
-        }, []);
+                   const weather = [];
+                   for (let i = 0; i < temp.cnt; i++) {
+                       const ith = {
+                           timestamp: temp.list[i].dt_txt,
+                           temperature: temp.list[i].main.temp,
+                           minTemperature: temp.list[i].main.temp_min,
+                           maxTemperature: temp.list[i].main.temp_max,
+                           humidity: temp.list[i].main.humidity,
+                           weather: temp.list[i].weather[0].main,
+                           rainfall: temp.list[i].rain ? temp.list[i].rain['3h'] : 0
+                       };
+                       weather.push(ith);
+                   }
 
-  const getWeatherInfo = async () => {
-    try {
-      // 위도와 경도
-      const latitude = 33.361719;
-      const longitude = 126.529464;
+                   setWeatherData(weather);
+                   setLoading(false);
+               } catch (error) {
+                   setError(error);
+                   setLoading(false);
+               }
+           };
 
-      // GET 요청 보내기
-      const response = await axios.get(`/weather?latitude=${latitude}&longitude=${longitude}`);
+           fetchData();
+       }, []);
 
-      // 받은 데이터 설정
-      setWeatherInfo(response.data);
-    } catch (error) {
-      console.error('Error while fetching weather data:', error);
-    }
-  };
-
-  // 페이지 로드 시 Weather 정보 가져오기
-  useEffect(() => {
-    getWeatherInfo();
-  }, []);
-
+       if (loading) return <div>Loading...</div>;
+       if (error) return <div>Error: {error.message}</div>;
+       if (!weatherData) return null;
 
   return (
     <div className="container-fluid">
       <h1 className="mt-4">홈페이지</h1>
-      <p>백엔드에서 가져온 데이터: {hello}</p>
-      <p>날씨 정보 : {weatherInfo}</p>
+         <div>
+             {weatherData.map((data, index) => (
+                          <div key={index}>
+                              <p>시간: {data.timestamp}</p>
+                              <p>온도: {data.temperature}</p>
+                              <p>최저 기온: {data.minTemperature}</p>
+                              <p>최고 기온: {data.maxTemperature}</p>
+                              <p>습도: {data.humidity}</p>
+                              <p>날씨: {data.weather}</p>
+                              <p>강수량: {data.rainfall}</p>
+                          </div>
+                      ))}
+        </div>
       <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
       <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#sidebarToggle</code> ID which will toggle the menu when clicked.</p>
     </div>
+
   );
 }
 
 export default HomePage;
+

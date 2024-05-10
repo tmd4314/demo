@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-//import '../css/Signup.css';
+import '../css/Signup.css';
 import { Form, Button } from 'react-bootstrap';
 
 function Signup() {

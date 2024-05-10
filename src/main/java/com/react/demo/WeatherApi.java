@@ -20,8 +20,8 @@ public class WeatherApi {
 
         @GetMapping("/weather")
         public String getWeather(@RequestParam double latitude, @RequestParam double longitude) {
-            String apiKey = "f5cee2776b05720a81722527b6bf4a4e"; // Your OpenWeatherMap API key
-            String lang = "kr"; // 언어를 여기에 입력하세요.
+            String apiKey = "f5cee2776b05720a81722527b6bf4a4e";
+            String lang = "kr";
             String apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
 
             // RestTemplate 생성
