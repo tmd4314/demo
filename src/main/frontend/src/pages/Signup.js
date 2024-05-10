@@ -59,14 +59,16 @@ function Signup() {
 
     try {
       // 회원가입 데이터를 서버에 전송
-      await axios.post('/user/signup', userCreateForm, {
+      const response = await axios.post('/user/signup', userCreateForm, {
         headers: {
           'X-XSRF-Token': csrfToken,
           'Content-Type': 'application/json'
         }
       });
-        window.alert('회원가입을 축하드립니다.');
-        window.location.href = '/';
+//        window.alert('회원가입을 축하드립니다.');
+//        window.location.href = '/';
+        console.log(response);
+        console.log(userCreateForm)
     } catch (error) {
       console.error('Signup failed:', error);
     }
