@@ -1,0 +1,115 @@
+.sample-trail {
+  box-sizing: border-box;
+  width: auto;
+  height: 400px;
+  background-color: #c4db78;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: left;
+}
+
+.trail-name-box {
+  box-sizing: border-box;
+  position: relative;
+  flex: 0.45;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.trail-name-box p {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.trail-name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 80%;
+  max-width: 400px; /* 요소가 너무 넓어질 경우 최대 너비 설정 */
+  width: 100%; /* 부모 요소에 맞게 가로 폭 설정 */
+}
+
+.trail-name p {
+  flex: 0 0 calc(33.33% - 20px);
+  margin: 10px;
+  text-align: center;
+}
+
+.trail-photo-box {
+  box-sizing: border-box;
+  flex: 0.65;
+  margin: 5px;
+  border-radius: 10px;
+
+  /* 사진을 가운데 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.trail {
+  position: absolute;
+  max-width: 95%;
+  max-height: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 버튼 */
+.trail-name button {
+  font-family: monospace;
+  background-color: #fff;
+  border: none;
+  border-radius: 100px;
+  width: 100px;
+  height: 40px;
+  transition: 0.3s;
+}
+
+.trail-name button:hover {
+  color: #fff;
+}
+
+#road1:hover {
+  background-color: #b0c4de;
+}
+
+#road2:hover {
+  background-color: #8fbc8f;
+}
+
+#road3:hover {
+  background-color: #ffb6c1;
+}
+
+#road4:hover {
+  background-color: #a0dddd;
+}
+
+#road5:hover {
+  background-color: #a995d1;
+}
+
+#road6:hover {
+  background-color: #e7804e;
+}
+
+#road7:hover {
+  background-color: #f0e68c;
+}
+
+/* logo */
+#logo {
+  width: 100px;
+  height: 70px;
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+}
