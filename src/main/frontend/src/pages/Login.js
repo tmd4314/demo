@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Login() {
@@ -8,21 +8,26 @@ function Login() {
   });
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    console.log("isAuthenticated:", isAuthenticated);
+  }, [isAuthenticated]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-      try {
-        const response = await axios.post('/user/login', formData);
-        console.log(response.data);
-       window.alert('로그인을 하였습니다.');
-       window.location.href = '/';
-        // 로그인 성공 시 처리
-      } catch (error) {
-        console.error('Login failed:', error);
-        setError('사용자 이름 또는 비밀번호를 확인하세요.');
-      }
-    };
-
+    try {
+      const response = await axios.post('/user/login', formData);
+      console.log("서버 응답:", response.data);
+      setIsAuthenticated(true);
+      localStorage.setItem('isAuthenticated', 'true'); // 인증 상태 저장
+      window.alert('로그인을 하였습니다.');
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Login failed:', error);
+      setError('사용자 이름 또는 비밀번호를 확인하세요.');
+    }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;

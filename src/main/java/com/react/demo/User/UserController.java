@@ -1,13 +1,11 @@
 package com.react.demo.User;
 
+import com.react.demo.SecurityConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
 
 import java.util.*;
+
 
 @RequiredArgsConstructor
 @RestController
@@ -101,16 +100,14 @@ public class UserController {
 
         // 필요에 따라 추가적인 로직 수행 가능 (예: 토큰 발급, 세션 설정 등)
 
-        return ResponseEntity.ok("로그인 성공: " + userDetails.getUsername());
+        return ResponseEntity.ok("로그인 성공: " +authentication.isAuthenticated());
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout() {
-        // 현재 사용자를 인증에서 로그아웃하고, 세션을 무효화합니다.
-        SecurityContextHolder.clearContext();
-        return ResponseEntity.ok("로그아웃이 성공적으로 처리되었습니다.");
-    }
-
-
+    @GetMapping("/logout")
+        public ResponseEntity<String> logout() {
+            // 현재 사용자를 인증에서 로그아웃하고, 세션을 무효화합니다.
+            SecurityContextHolder.clearContext();
+            return ResponseEntity.ok("로그아웃이 성공적으로 처리되었습니다.");
+        }
 }
 

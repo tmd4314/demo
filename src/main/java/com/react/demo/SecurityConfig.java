@@ -37,9 +37,9 @@ public class SecurityConfig {
                 .headers((headers) -> headers
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(
                                 XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
-//                .logout((logout)->logout
-//                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-//                        .logoutSuccessUrl("/")
+                .logout((logout)->logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                        .logoutSuccessUrl("/"))
 //                        .invalidateHttpSession(true))
 //                .csrf(csrf -> csrf
 //                        .ignoringRequestMatchers("/user/login") // 로그인 폼은 CSRF 보호에서 제외

@@ -7,7 +7,6 @@ import Sidebar from './bar/Sidebar';
 import Navbar from './bar/Navbar';
 import HomePage from './pages/Homepage';
 import Login from './pages/Login';
-import Logout from './pages/Logout';
 import Signup from './pages/Signup';
 import Forecast from './pages/Forecast';
 import StatFire from './pages/StatFire';
@@ -28,7 +27,6 @@ function App() {
               <Route exact path="/user/signup" element={<Signup />} />
               <Route exact path="/user/statfire" element={<StatFire />} />
               <Route exact path="/user/mountain" element={<Mountain />} />
-              <Route exact path="/user/logout" element={<Logout />} />
             </Routes>
           </Container>
         </div>
