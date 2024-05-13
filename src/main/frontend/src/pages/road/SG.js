@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Container as MapDiv, NaverMap, Marker, Polyline,useNavermaps } from 'react-naver-maps';
+import { Container as MapDiv, NaverMap, Marker, Polyline, useNavermaps } from 'react-naver-maps';
+import '../../css/Home.css';
 
 const MapWithPanoramaAndRoute = () => {
     const navermaps = useNavermaps();
@@ -13,8 +14,8 @@ const MapWithPanoramaAndRoute = () => {
     useEffect(() => {
         const initializePanorama = () => {
             const panoramaOptions = {
-                size: new navermaps.Size(1250, 600),
-                position: new navermaps.LatLng(33.410856, 126.4942519),
+                // 크기를 반응형으로 조절하기 위해 width와 height를 삭제합니다.
+                position: new navermaps.LatLng(33.410956, 126.4941619),
                 pov: {
                     pan: -135,
                     tilt: 29,
@@ -47,7 +48,17 @@ const MapWithPanoramaAndRoute = () => {
 
         initializePanorama();
 
+        // 브라우저 창의 크기가 변경될 때마다 패노라마의 크기를 조절합니다.
+        const handleResize = () => {
+            if (panorama) {
+                panorama.setSize(new navermaps.Size(window.innerWidth, window.innerHeight));
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
         return () => {
+            window.removeEventListener('resize', handleResize);
             if (panorama) {
                 panorama.destroy();
             }
@@ -79,21 +90,22 @@ const MapWithPanoramaAndRoute = () => {
 
     return (
         <div>
-            <h3>석굴암 탐방로</h3>
-            <div>
-                <a href="/user/ar">어리목 탐방로</a><br/>
-                <a href="/user/ys">영실 탐방로</a><br/>
-                <a href="/user/sp">성판악 탐방로</a><br/>
-                <a href="/user/as">어승생악 탐방로</a><br/>
-                <a href="/user/dn">돈내코 탐방로</a><br/>
-                <a href="/user/sg">석굴암 탐방로</a><br/>
-                <a href="/user/gs">관음사 탐방로</a><br/>
-            </div>
+            <br/><h3>석굴암 탐방로</h3><br/>
+                <div className="trail-name1">
+                <button id="road11" onClick={() => window.location.href = "/user/ar"}>어리목탐방로</button>
+                <button id="road12" onClick={() => window.location.href = "/user/ys"}>영실탐방로</button>
+                <button id="road13" onClick={() => window.location.href = "/user/sp"}>성판악탐방로</button>
+                <button id="road14" onClick={() => window.location.href = "/user/as"}>어승생악탐방로</button>
+                <button id="road15" onClick={() => window.location.href = "/user/dn"}>돈내코탐방로</button>
+                <button id="road16" onClick={() => window.location.href = "/user/sg"}>석굴암탐방로</button>
+                <button id="road17" onClick={() => window.location.href = "/user/gs"}>관음사탐방로</button><br/>
+                </div><br/>
             <MapDiv
                 style={{
                     position: 'relative',
-                    width: '100%',
+                    width: '96%',
                     height: '600px',
+                    margin: '10px'
                 }}
             >
                 <div
@@ -133,18 +145,18 @@ const MapWithPanoramaAndRoute = () => {
                     )}
                 </NaverMap>
             </MapDiv>
-            <div ref={panoramaRef} style={{width: '100%', height: '600px'}}></div>
-            <p>석굴암탐방로는 제주시와 인접해 있어 승용차로 약 20분 정도면 탐방로 입구에 도착 할 수 있다. 1100도로(1139번도로)변 천왕사사찰 입구에서 삼나무 숲길을 10여분 걸으면 탐방로가 시작되는 국립제주호국원 주차장에 도착한다. 석굴암 암자까지 편도 1. 5Km에 50분이 소요된다.
+            <br/><div ref={panoramaRef} style={{width: '96%', height: '600px', margin: '10px'}} ></div>
+            <p><br/>석굴암탐방로는 제주시와 인접해 있어 승용차로 약 20분 정도면 탐방로 입구에 도착 할 수 있다. 1100도로(1139번도로)변 천왕사사찰 입구에서 삼나무 숲길을 10여분 걸으면 탐방로가 시작되는 국립제주호국원 주차장에 도착한다. 석굴암 암자까지 편도 1. 5Km에 50분이 소요된다.<br/><br/>
 
 
 
-               골짜기와 산세가 뛰어난 아흔아홉골에 위치한 석굴암 탐방로는 도심에서 벗어나 가볍게 등산을 원하는 탐방객들이 많이 찾는 코스다. 한라산의 깊은 계곡, 소나무와 활엽수가 혼재한 울창한 숲 사이로 스쳐가는 바람 소리가 도심속의 찌든 때를 씻어 주기에 더없이 안성맞춤인 곳이다. 계곡에 있는 석굴암은 우뚝 우뚝 선 바위들과 함께 암벽에 “南無 十六 大阿羅漢 聖衆”이란 마애명이 새겨져 있기도 하다.
+               골짜기와 산세가 뛰어난 아흔아홉골에 위치한 석굴암 탐방로는 도심에서 벗어나 가볍게 등산을 원하는 탐방객들이 많이 찾는 코스다. 한라산의 깊은 계곡, 소나무와 활엽수가 혼재한 울창한 숲 사이로 스쳐가는 바람 소리가 도심속의 찌든 때를 씻어 주기에 더없이 안성맞춤인 곳이다. 계곡에 있는 석굴암은 우뚝 우뚝 선 바위들과 함께 암벽에 “南無 十六 大阿羅漢 聖衆”이란 마애명이 새겨져 있기도 하다.<br/>
 
 
 
-               대중교통 240번 버스운영 시간 -> 제주버스정보시스템 http://bus.jeju.go.kr/ 을 통해 쉽게 알아 볼 수 있다.
-               매     점 : 석굴암탐방로 전구간은 매점이 없으므로 사전에 산행에 필요한 물품(식수, 간단한 먹거리 등)은 철저히 준비하여 주시기 바랍니다.
-               기타 문의 : 한라산국립공원관리소  064)713-9950~1
+              <br/><br/>대중교통 240번 버스운영 시간 -> 제주버스정보시스템 http://bus.jeju.go.kr/ 을 통해 쉽게 알아 볼 수 있다.
+              <br/><br/> 매     점 : 석굴암탐방로 전구간은 매점이 없으므로 사전에 산행에 필요한 물품(식수, 간단한 먹거리 등)은 철저히 준비하여 주시기 바랍니다.
+               <br/><br/>기타 문의 : 한라산국립공원관리소  064)713-9950~1
                 </p>
         </div>
     );

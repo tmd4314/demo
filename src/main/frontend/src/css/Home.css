@@ -34,11 +34,21 @@
   width: 100%; /* 부모 요소에 맞게 가로 폭 설정 */
 }
 
+
 .trail-name p {
   flex: 0 0 calc(33.33% - 20px);
   margin: 10px;
   text-align: center;
 }
+.trail-name1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 100%;
+  max-width: 5000px; /* 요소가 너무 넓어질 경우 최대 너비 설정 */
+  width: 100%; /* 부모 요소에 맞게 가로 폭 설정 */
+}
+
 
 .trail-photo-box {
   box-sizing: border-box;
@@ -69,6 +79,15 @@
   border: none;
   border-radius: 100px;
   width: 100px;
+  height: 40px;
+  transition: 0.3s;
+}
+.trail-name1 button {
+  font-family: monospace;
+  background-color: #fff;
+  border: none;
+  border-radius: 100px;
+  width: 150px;
   height: 40px;
   transition: 0.3s;
 }
@@ -104,6 +123,34 @@
 #road7:hover {
   background-color: #f0e68c;
 }
+#road11 {
+  background-color: #b0c4de;
+}
+
+#road12 {
+  background-color: #8fbc8f;
+}
+
+#road13 {
+  background-color: #ffb6c1;
+}
+
+#road14 {
+  background-color: #a0dddd;
+}
+
+#road15 {
+  background-color: #a995d1;
+}
+
+#road16 {
+  background-color: #e7804e;
+}
+
+#road17 {
+  background-color: #f0e68c;
+}
+
 
 /* logo */
 #logo {
