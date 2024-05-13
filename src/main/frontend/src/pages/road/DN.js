@@ -14,7 +14,7 @@ const MapWithPanoramaAndRoute = () => {
         const initializePanorama = () => {
             const panoramaOptions = {
                 size: new navermaps.Size(1250, 600),
-                position: new navermaps.LatLng(33.382912, 126.496724),
+                position: new navermaps.LatLng(33.313956,126.571600),
                 pov: {
                     pan: -135,
                     tilt: 29,
@@ -72,17 +72,15 @@ const MapWithPanoramaAndRoute = () => {
         [startPoint, endPoint]
     );
     const points = [
-        { lat:  33.3926876, lng: 126.4948419 },
+        { lat:  33.313956, lng: 126.571600 },
         // Add more points here as needed
-        { lat: 33.375200, lng: 126.499150 },
-        { lat: 33.369500, lng: 126.507675 },
-        { lat: 33.362130, lng: 126.517760 },
+        { lat: 33.348600, lng: 126.545150 },
         { lat: 33.354514, lng: 126.534040 }
     ];
 
     return (
         <div>
-            <h3>어리목 탐방로</h3>
+            <h3>돈내코 탐방로</h3>
             <div>
                 <a href="/user/ar">어리목 탐방로</a><br/>
                 <a href="/user/ys">영실 탐방로</a><br/>
@@ -111,8 +109,8 @@ const MapWithPanoramaAndRoute = () => {
                 </div>
                 <NaverMap
                     onClick={handleMapClick}
-                    defaultCenter={new navermaps.LatLng(33.374753, 126.506911)}
-                    defaultZoom={14}
+                    defaultCenter={new navermaps.LatLng(33.334281, 126.551194)}
+                    defaultZoom={13}
                 >
                     {/* Render markers for each point */}
                     {points.map((point, index) => (
