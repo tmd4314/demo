@@ -11,6 +11,14 @@ import Signup from './pages/Signup';
 import Forecast from './pages/Forecast';
 import StatFire from './pages/StatFire';
 import Mountain from './pages/Mountain';
+import AR from './pages/road/AR';
+import YS from './pages/road/YS';
+import SP from './pages/road/SP';
+import AS from './pages/road/AS';
+import GS from './pages/road/GS';
+import SG from './pages/road/SG';
+import DN from './pages/road/DN';
+
 
 function App() {
   return (
@@ -27,6 +35,14 @@ function App() {
               <Route exact path="/user/signup" element={<Signup />} />
               <Route exact path="/user/statfire" element={<StatFire />} />
               <Route exact path="/user/mountain" element={<Mountain />} />
+              <Route exact path="/user/ar" element={<AR />} />
+              <Route exact path="/user/ys" element={<YS />} />
+              <Route exact path="/user/sp" element={<SP />} />
+              <Route exact path="/user/gs" element={<GS />} />
+              <Route exact path="/user/sg" element={<SG />} />
+              <Route exact path="/user/dn" element={<DN />} />
+              <Route exact path="/user/as" element={<AS />} />
+
             </Routes>
           </Container>
         </div>
