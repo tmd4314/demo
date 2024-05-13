@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function NavbarComponent() {
     const [isAuthenticated, setIsAuthenticated] = useState(
-        localStorage.getItem('isAuthenticated') === 'true' // 저장된 인증 상태 가져오기
+        localStorage.getItem('isAuthenticated') === 'true' // 저장된 인증 상태 가져오기입니다.
       );
 
       // 로그아웃 함수
