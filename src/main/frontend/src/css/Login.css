@@ -5,9 +5,22 @@
     padding: 20px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+#loginBtn, #joinBtn {
+    width: 100px;
+}
+
+#joinBtn {
+    margin-right: 20px;
+}
 
 @media (max-width: 767px) {
     .login-box {
-        width: 100%; /* 전체 너비를 차지하도록 변경 */
+        width: 100%;
     }
 }

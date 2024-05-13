@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+import '../css/Login.css';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -50,7 +54,9 @@ function Login() {
             {successMessage}
           </div>
         )}
-        <div className="mb-3">
+
+
+        {/* <div className="mb-3">
           <label htmlFor="userid" className="form-label">사용자 ID</label>
           <input type="text" name="userid" id="userid" className="form-control" value={formData.userid} onChange={handleChange} />
         </div>
@@ -58,7 +64,28 @@ function Login() {
           <label htmlFor="password" className="form-label">비밀번호</label>
           <input type="password" name="password" id="password" className="form-control" value={formData.password} onChange={handleChange} />
         </div>
-        <button type="submit" className="btn btn-primary">로그인</button>
+        <button type="submit" className="btn btn-primary">로그인</button> */}
+
+
+        <div className='login-box'>
+          <h3>로그인</h3>
+          <div>
+            <div className="form-item">
+              <Form.Control type="username" placeholder="아이디" name="userid" id="userid" className="form-control" value={formData.userid} onChange={handleChange} />
+            </div>
+            <div className="form-item">
+              <Form.Control type="password" placeholder="비밀번호" name="password" id="password" className="form-control" value={formData.password} onChange={handleChange} />
+            </div>
+            <div className="button-container">
+              <a href='/user/signup'>
+                  <Button variant="secondary" id='joinBtn'>회원가입</Button>
+              </a>
+              <Button variant="primary" type="submit" id='loginBtn'>로그인</Button>
+            </div>
+          </div>
+        </div>
+
+
       </form>
     </div>
   );

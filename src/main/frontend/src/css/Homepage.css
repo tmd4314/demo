@@ -1,0 +1,15 @@
+.weather-data {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+    flex: 0 0 auto;
+    width: 95px;
+}
+
+.weather-container{
+   display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+}

@@ -3,49 +3,72 @@ import { Container, Nav, Navbar, NavDropdown, Form, Row, Col, Button } from 'rea
 import { Link } from 'react-router-dom'; // React Router의 Link를 가져옵니다.
 import axios from 'axios';
 
-function NavbarComponent() {
-    const [isAuthenticated, setIsAuthenticated] = useState(
-        localStorage.getItem('isAuthenticated') === 'true' // 저장된 인증 상태 가져오기입니다.
-      );
+import '../css/App.css';
 
-      // 로그아웃 함수
-      const handleLogout = () => {
-        axios.get('/user/logout')
-          .then(response => {
-            // 로그아웃 성공 시 페이지 새로 고침
-            console.log(response);
-            // 로그아웃 성공 시 isAuthenticated 상태를 false로 설정 및 로컬 스토리지에서 제거
-            setIsAuthenticated(false);
-            localStorage.removeItem('isAuthenticated');
-            window.location.reload();
-          })
-          .catch(error => {
-            // 로그아웃 실패 시 처리할 코드
-            console.error('Logout failed:', error);
-          });
+function NavbarComponent() {
+
+  // 네비바 동작 js
+  useEffect(() => {
+    const handleSidebarToggle = (event) => {
+      event.preventDefault();
+      document.body.classList.toggle('sb-sidenav-toggled');
+      localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+    };
+
+    const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', handleSidebarToggle);
+
+      return () => {
+        sidebarToggle.removeEventListener('click', handleSidebarToggle);
       };
+    }
+  }, []);
+
+  // 저장된 인증 상태 가져오기입니다.
+  const [isAuthenticated, setIsAuthenticated] = useState(
+      localStorage.getItem('isAuthenticated') === 'true'
+    );
+
+  // 로그아웃 함수
+  const handleLogout = () => {
+    axios.get('/user/logout')
+    .then(response => {
+      // 로그아웃 성공 시 페이지 새로 고침
+      console.log(response);
+      // 로그아웃 성공 시 isAuthenticated 상태를 false로 설정 및 로컬 스토리지에서 제거
+      setIsAuthenticated(false);
+      localStorage.removeItem('isAuthenticated');
+      window.location.reload();
+    })
+    .catch(error => {
+      // 로그아웃 실패 시 처리할 코드
+      console.error('Logout failed:', error);
+    });
+  };
 
   return (
 
     <Navbar expand="lg" className="bg-body-tertiary border-bottom">
       <Container fluid>
-        <Navbar.Brand href="/">산악인</Navbar.Brand>
-        <Nav className="me-auto">
-          <Form>
-            <Row>
-              <Col xs="auto">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className=" mr-sm-2"
-                />
-              </Col>
-              <Col xs="auto">
-                <Button type="submit">검색</Button>
-              </Col>
-            </Row>
-          </Form>
-        </Nav>
+        <Button variant="secondary" id="sidebarToggle">더보기</Button>
+        
+        <Form className="search-form">
+          <Row>
+            <Col xs="auto">
+              <Form.Control
+                type="text"
+                placeholder="검색"
+                className="mr-sm-2"
+              />
+            </Col>
+            <Col xs="auto">
+              <Button type="submit">검색</Button>
+            </Col>
+          </Row>
+        </Form>
+
+        <Navbar.Toggle aria-controls="navbarSupportedContent" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
             {isAuthenticated  ? (

@@ -1,66 +1,51 @@
-// HomePage.js (or any other page component that needs axios)
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import '../css/Home.css';
+import 기초  from '../img/기초.png';
+import 어리목탐방로  from '../img/어리목탐방로.png';
+import 영실탐방로  from '../img/영실탐방로.png';
+import 성판악탐방로  from '../img/성판악탐방로.png';
+import 어승생악탐방로  from '../img/어승생악탐방로.png';
+import 돈내코탐방로  from '../img/돈내코탐방로.png';
+import 석굴암탐방로  from '../img/석굴암탐방로.png';
+import 관음사탐방로  from '../img/관음사탐방로.png';
+import logo from '../img/logo.png';
 
 function HomePage() {
-      const [weatherData, setWeatherData] = useState([]);
-      const [loading, setLoading] = useState(true);
-      const [error, setError] = useState(null);
-       useEffect(() => {
-           const fetchData = async () => {
-               try {
-                   const response = await axios.get('https://api.openweathermap.org/data/2.5/forecast?lat=33.360949&lon=126.529803&appid=f5cee2776b05720a81722527b6bf4a4e&lang=kr&units=metric');
-                   const temp = response.data;
+  const [currentPhoto, setCurrentPhoto] = useState(기초); // 초기값으로 기초 이미지 설정
 
-                   const weather = [];
-                   for (let i = 0; i < temp.cnt; i++) {
-                       const ith = {
-                           timestamp: temp.list[i].dt_txt,
-                           temperature: temp.list[i].main.temp,
-                           minTemperature: temp.list[i].main.temp_min,
-                           maxTemperature: temp.list[i].main.temp_max,
-                           humidity: temp.list[i].main.humidity,
-                           weather: temp.list[i].weather[0].main,
-                           rainfall: temp.list[i].rain ? temp.list[i].rain['3h'] : 0
-                       };
-                       weather.push(ith);
-                   }
+  // 버튼에 마우스를 가져가면 해당 버튼의 이미지를 표시하는 함수
+  const handleMouseOver = (photo) => {
+    setCurrentPhoto(photo);
+  };
 
-                   setWeatherData(weather);
-                   setLoading(false);
-               } catch (error) {
-                   setError(error);
-                   setLoading(false);
-               }
-           };
-
-           fetchData();
-       }, []);
-
-       if (loading) return <div>Loading...</div>;
-       if (error) return <div>Error: {error.message}</div>;
-       if (!weatherData) return null;
+  // 버튼에서 마우스를 떼면 초기 이미지로 변경하는 함수
+  const handleMouseOut = () => {
+    setCurrentPhoto(기초);
+  };
 
   return (
-    <div className="container-fluid">
-      <h1 className="mt-4">홈페이지</h1>
-         <div>
-             {weatherData.map((data, index) => (
-                          <div key={index}>
-                              <p>시간: {data.timestamp}</p>
-                              <p>온도: {data.temperature}</p>
-                              <p>최저 기온: {data.minTemperature}</p>
-                              <p>최고 기온: {data.maxTemperature}</p>
-                              <p>습도: {data.humidity}</p>
-                              <p>날씨: {data.weather}</p>
-                              <p>강수량: {data.rainfall}</p>
-                          </div>
-                      ))}
+    <>
+      <div className="sample-trail">
+        <div className="trail-name-box">
+          <p>등산로</p>
+          <div className="trail-name">
+            <button id="road1" onMouseOver={() => handleMouseOver(어리목탐방로)} onMouseOut={handleMouseOut}>어리목탐방로</button>
+            <button id="road2" onMouseOver={() => handleMouseOver(영실탐방로)} onMouseOut={handleMouseOut}>영실탐방로</button>
+            <button id="road3" onMouseOver={() => handleMouseOver(성판악탐방로)} onMouseOut={handleMouseOut}>성판악탐방로</button>
+            <button id="road4" onMouseOver={() => handleMouseOver(어승생악탐방로)} onMouseOut={handleMouseOut}>어승생악탐방로</button>
+            <button id="road5" onMouseOver={() => handleMouseOver(돈내코탐방로)} onMouseOut={handleMouseOut}>돈내코탐방로</button>
+            <button id="road6" onMouseOver={() => handleMouseOver(석굴암탐방로)} onMouseOut={handleMouseOut}>석굴암탐방로</button>
+            <button id="road7" onMouseOver={() => handleMouseOver(관음사탐방로)} onMouseOut={handleMouseOut}>관음사탐방로</button>
+          </div>
+          <img src={logo} alt="logo" id="logo" />
         </div>
-      <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-      <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#sidebarToggle</code> ID which will toggle the menu when clicked.</p>
-    </div>
-
+        <div className="trail-photo-box">
+          <div className="trail-photo">
+            <img src={currentPhoto} alt="등산로 지도" className="trail" id="base"/>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

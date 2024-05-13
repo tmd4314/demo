@@ -641,11 +641,11 @@ progress {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
   }
-}
+} */
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
     max-width: 720px;
@@ -10866,4 +10866,11 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .fixed-sidebar,
 #fixed-sidebar-wrapper {
   width: 255px; /* 너비 조정 */
+}
+
+/* 추가 css */
+
+.search-form {
+  margin-left: 10px;
+  margin-right: auto;
 }

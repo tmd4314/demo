@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../css/Signup.css';
+//import '../css/Signup.css';
 import { Form, Button } from 'react-bootstrap';
 
 function Signup() {
@@ -29,21 +29,6 @@ function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-//    // 아이디, 이메일, 전화번호의 중복 여부 확인
-//    try {
-//      const { data } = await axios.post('/user/check-duplicates', {
-//        username: userCreateForm.username,
-//        email: userCreateForm.email,
-//        phoneNumber: userCreateForm.phoneNumber
-//      });
-//
-//      if (data.error) {
-//        setErrorMessage(data.message);
-//        return;
-//      }
-//    } catch (error) {
-//      console.error('Error checking duplicates:', error);
-//    }
 
     // 비밀번호의 길이 확인
     if (userCreateForm.password.length < 8) {
@@ -85,39 +70,48 @@ function Signup() {
       <h2>회원가입</h2>
       <Form onSubmit={handleSubmit}>
         <input type="hidden" name="_csrf" value={csrfToken} />
-        <Form.Group controlId="formBasicUserid">
-          <Form.Label>ID</Form.Label>
-          <Form.Control type="text" placeholder="ID (3자 이상, 25자 이하)" name="userid" value={userCreateForm.userid} onChange={handleInputChange} minLength={3} maxLength={25} required />
-        </Form.Group>
+        <Form.Group>
+          <div className='input-id'>
+            <div>
+                <p>기본 정보</p>
+            </div>
+            <div className="form-container">
+              <div className="form-item">
+                <Form.Control type="text" placeholder="ID (3자 이상, 25자 이하)" name="userid" value={userCreateForm.userid} onChange={handleInputChange} minLength={3} maxLength={25} required />
+              </div>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>비밀번호</Form.Label>
-          <Form.Control type="password" placeholder="비밀번호 (8자 이상)" name="password" value={userCreateForm.password} onChange={handleInputChange} minLength={8} required />
-        </Form.Group>
+              <div className="form-item">
+                <Form.Control type="password" placeholder="비밀번호 (8자 이상)" name="password" value={userCreateForm.password} onChange={handleInputChange} minLength={8} required />
+              </div>
 
-        <Form.Group controlId="formBasicPasswordConfirmation">
-          <Form.Label>비밀번호 확인</Form.Label>
-          <Form.Control type="password" placeholder="비밀번호 확인" name="passwordConfirmation" value={userCreateForm.passwordConfirmation} onChange={handleInputChange} required />
-        </Form.Group>
+              <div className="form-item">
+                <Form.Control type="password" placeholder="비밀번호 확인" name="passwordConfirmation" value={userCreateForm.passwordConfirmation} onChange={handleInputChange} required />
+              </div>
+            </div>
+          </div>
 
-        <Form.Group controlId="formBasicUsername">
-            <Form.Label>닉네임</Form.Label>
-            <Form.Control type="text" placeholder="닉네임 (3자 이상, 25자 이하)" name="username" value={userCreateForm.username} onChange={handleInputChange} minLength={3} maxLength={25} required />
+          <div className='input-me'>
+            <div className="form-container">
+              <div className="form-item">
+                <p>닉네임</p>
+                <Form.Control type="text" placeholder="닉네임 (3자 이상, 25자 이하)" name="username" value={userCreateForm.username} onChange={handleInputChange} minLength={3} maxLength={25} required />
+              </div>
+            </div>
+            <div className="form-container">
+              <div className="form-item">
+                <p>이메일</p>
+                <Form.Control type="email" placeholder="이메일" name="email" value={userCreateForm.email} onChange={handleInputChange} required />
+              </div>
+            </div>
+            <div className="form-container">
+              <div className="form-item">
+                <p>전화번호</p>
+                <Form.Control type="tel" placeholder="전화번호" name="phoneNumber" value={userCreateForm.phoneNumber} onChange={handleInputChange} required />
+              </div>
+            </div>
+          </div>
         </Form.Group>
-
-        <Form.Group controlId="formBasicPhoneNumber">
-          <Form.Label>전화번호</Form.Label>
-          <Form.Control type="tel" placeholder="전화번호" name="phoneNumber" value={userCreateForm.phoneNumber} onChange={handleInputChange} required />
-        </Form.Group>
-
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>이메일</Form.Label>
-          <Form.Control type="email" placeholder="이메일" name="email" value={userCreateForm.email} onChange={handleInputChange} required />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          회원가입
-        </Button>
+        <Button variant="primary" type='submit'>회원가입</Button>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </Form>
     </div>
