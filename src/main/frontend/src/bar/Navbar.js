@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Nav, Navbar, NavDropdown, Form, Row, Col, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; // React Router의 Link를 가져옵니다.
 import axios from 'axios';
 
@@ -36,20 +36,21 @@ function NavbarComponent() {
           <Nav>
             {isAuthenticated  ? (
                 <>
-                    <Link to="/user/rank" className="nav-link">랭킹</Link>
-                    <Link to="/user/mission" className="nav-link">미션</Link>
-                    <Link to="/weather" className="nav-link">날씨 예보</Link>
-                    <NavDropdown title="마이페이지" id="basic-nav-dropdown">
-                        <Link to="/mypage" className="dropdown-item">회원 수정</Link>
-                        <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
-                        <NavDropdown.Divider/>
-                        <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
-                    </NavDropdown>
+                  <Link to="/user/weather" className="nav-link">날씨</Link>
+                  <Link to="/user/rank" className="nav-link">랭킹</Link>
+                  <Link to="/user/mission" className="nav-link">미션</Link>
+                  <NavDropdown title="마이페이지" id="basic-nav-dropdown">
+                      <Link to="/mypage" className="dropdown-item">회원 수정</Link>
+                      <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
+                      <NavDropdown.Divider/>
+                      <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
+                  </NavDropdown>
                 </>
             ) : (
                 <>
-                    <Link to="/user/rank" className="nav-link">랭킹</Link>
-                    <Link to="/user/login" className="nav-link">로그인</Link>
+                  <Link to="/user/weather" className="nav-link">날씨</Link>
+                  <Link to="/user/rank" className="nav-link">랭킹</Link>
+                  <Link to="/user/login" className="nav-link">로그인</Link>
                 <Link to="/user/signup" className="nav-link">회원가입</Link>
               </>
             )}
