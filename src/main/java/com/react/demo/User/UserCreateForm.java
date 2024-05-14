@@ -18,6 +18,7 @@ public class UserCreateForm {
 
     private String phoneNumber;
 
+    // 이메일 입니다.
     private String email;
 
 }

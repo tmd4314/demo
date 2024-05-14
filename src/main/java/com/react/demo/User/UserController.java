@@ -45,7 +45,7 @@ public class UserController {
     public ResponseEntity<Object> signup(@Valid @RequestBody UserCreateForm userCreateForm, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            // 클라이언트에서 넘어온 값들 에러 잡아주는 경우
+            // 클라이언트에서 넘어온 값들 에러 잡아주는 경우.
             System.out.println("Errors: " + bindingResult.getAllErrors());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bindingResult.getAllErrors());
         }

@@ -29,7 +29,7 @@ public class UserService {
         user.setUsername(userCreateForm.getUsername());
         user.setPhoneNumber(userCreateForm.getPhoneNumber());
         user.setEmail(userCreateForm.getEmail());
-        user.setCreated_dt(LocalDateTime.now()); // 생성 일시 설정
+        user.setCreated_dt(LocalDateTime.now()); // 생성 일시 설정함.
         userRepository.save(user);
     }
 

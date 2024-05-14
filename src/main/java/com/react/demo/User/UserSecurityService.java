@@ -22,6 +22,7 @@ public class UserSecurityService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+    // 에러 해결
     @Override
     public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
         Optional<User> userOptional = this.userRepository.findByUserid(userid);
