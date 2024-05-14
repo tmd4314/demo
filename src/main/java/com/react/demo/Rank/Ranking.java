@@ -8,18 +8,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "Ranking")
+@Table(name = "ranking") // 테이블 이름을 복수형으로 변경
 public class Ranking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long no;
 
-    @Column(unique = true)
     private String userId;
 
-    private String MissionId;
+    private Long missionId; // MissionId를 missionId로 변경하고 숫자형으로 수정
 
-    @Column(unique = true)
-    private String totalPoint;
+    private int totalPoint; // totalPoint를 숫자형으로 변경
 }

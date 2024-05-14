@@ -9,8 +9,6 @@ import HomePage from './pages/Homepage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Weather from './pages/Weather';
-import StatFire from './pages/StatFire';
-import Mountain from './pages/Mountain';
 import AR from './pages/road/AR';
 import YS from './pages/road/YS';
 import SP from './pages/road/SP';
@@ -18,7 +16,8 @@ import AS from './pages/road/AS';
 import GS from './pages/road/GS';
 import SG from './pages/road/SG';
 import DN from './pages/road/DN';
-
+import Mission from './pages/RankMission/Mission';
+import Rank from './pages/RankMission/Rank';
 
 function App() {
   return (
@@ -33,8 +32,6 @@ function App() {
               <Route exact path="/user/login" element={<Login />} />
               <Route exact path="/user/weather" element={<Weather />} />
               <Route exact path="/user/signup" element={<Signup />} />
-              <Route exact path="/user/StatFire" element={<StatFire />} />
-              <Route exact path="/user/mountain" element={<Mountain />} />
               <Route exact path="/user/ar" element={<AR />} />
               <Route exact path="/user/ys" element={<YS />} />
               <Route exact path="/user/sp" element={<SP />} />
@@ -42,7 +39,8 @@ function App() {
               <Route exact path="/user/sg" element={<SG />} />
               <Route exact path="/user/dn" element={<DN />} />
               <Route exact path="/user/as" element={<AS />} />
-
+              <Route exact path="/user/mission" element={<Mission />}/>
+              <Route exact path="/user/rank" element={<Rank />}/>
             </Routes>
           </Container>
         </div>

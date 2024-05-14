@@ -1,11 +1,11 @@
-package com.react.demo;
+package com.react.demo.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class WeatherApi {
+public class WeatherController {
 
     @GetMapping("/weather")
     public String getWeatherData() {

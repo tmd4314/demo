@@ -8,12 +8,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "Mission")
+@Table(name = "mission")
 public class Mission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long no;
+    private Long id;
 
     @Column(unique = true)
     private String Route;
