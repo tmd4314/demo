@@ -1,7 +1,9 @@
 // HomePage.js (or any other page component that needs axios)
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import  '../css/weather.css'
+import  '../css/weather.css';
+import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
+
 function Weather() {
       const [weatherData, setWeatherData] = useState([]);
       const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ function Weather() {
 
                    for (let i = 0; i < temp.cnt; i++) {
                       const date = new Date(temp.list[i].dt_txt);
-//                                          const year = date.getFullYear();
+//                                        const year = date.getFullYear();
                                           const month = date.getMonth() + 1;
                                           const day = date.getDate();
                                           const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
@@ -59,14 +61,21 @@ function Weather() {
              {weatherData.map((data, index) => (
                           <div key={index} className="weather-data">
                               <p>시간: <br/>{data.timestamp}</p>
-                              <p>온도: {data.temperature}</p>
-                              <p>최저 기온: {data.minTemperature}</p>
-                              <p>최고 기온: {data.maxTemperature}</p>
-                              <p>습도: {data.humidity}</p>
-                              <p>날씨: {data.weather}</p>
+                              <p>온도: {data.temperature}℃</p>
+                              <p>최저 기온: {data.minTemperature}℃</p>
+                              <p>최고 기온: {data.maxTemperature}℃</p>
+                              <p>습도: {data.humidity}%</p>
+                              <p>날씨: {data.weather}
+                                      {data.weather === "Clear" && <WiDaySunny size={65} color='#f00' />}
+                                      {data.weather === "Rain" && <WiRain size={65} color='#0080ff' />}
+                                      {data.weather === "Snow" && <WiSnow size={65} color='#0080ff' />}
+                                      {data.weather === "Clouds" && <WiCloudy size={65} color='#0080ff' />}
+                                      {data.weather === "Thunderstorm" && <WiThunderstorm size={65} color='#0080ff'/>}
+                                      {data.weather === "Mist" && <WiFog size={65} color='#0080ff' />}
+                                      {data.weather === "Fog" && <WiFog size={65} color='#0080ff' />} </p>
                               <p>강수량: {data.rainfall}</p>
                               <p>기압: {data.pressure}</p>
-                              <p>체감 온도: {data.feelsLike}</p>
+                              <p>체감 온도: {data.feelsLike}℃</p>
                           </div>
                       ))}
         </div>
