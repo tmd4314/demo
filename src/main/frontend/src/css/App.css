@@ -10,6 +10,13 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
+ .nanum-pen-script-regular {
+  font-family: "Nanum Pen Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -10869,6 +10876,13 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 }
 
 /* 추가 css */
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: #F5F5F5;
+  z-index: 200;
+}
 
 .search-form {
   margin-left: 10px;
