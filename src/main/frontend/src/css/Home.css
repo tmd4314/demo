@@ -32,6 +32,7 @@
   font-size: 80%;
   max-width: 400px; /* 요소가 너무 넓어질 경우 최대 너비 설정 */
   width: 100%; /* 부모 요소에 맞게 가로 폭 설정 */
+  margin: 0 auto; /* 수평 가운데 정렬을 위해 좌우 마진을 auto로 설정 */
 }
 
 
@@ -90,6 +91,7 @@
   width: 150px;
   height: 40px;
   transition: 0.3s;
+  margin: 10px; /* 각 버튼 사이의 간격을 조정합니다. */
 }
 
 .trail-name button:hover {

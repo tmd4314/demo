@@ -30,39 +30,26 @@ function NavbarComponent() {
     <Navbar expand="lg" className="bg-body-tertiary border-bottom">
       <Container fluid>
         <Navbar.Brand href="/">봉우리 원정대</Navbar.Brand>
-        <Nav className="me-auto">
-          <Form>
-            <Row>
-              <Col xs="auto">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className=" mr-sm-2"
-                />
-              </Col>
-              <Col xs="auto">
-                <Button type="submit">검색</Button>
-              </Col>
-            </Row>
-          </Form>
-        </Nav>
+        
+        <Navbar.Toggle aria-controls="navbarSupportedContent" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
             {isAuthenticated  ? (
-              <>
-                <Link to="/user/rank" className="nav-link">랭킹</Link>
-                <Link to="/user/mission" className="nav-link">미션</Link>
-                <NavDropdown title="마이페이지" id="basic-nav-dropdown">
-                  <Link to="/mypage" className="dropdown-item">회원 수정</Link>
-                  <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
-                </NavDropdown>
-              </>
+                <>
+                    <Link to="/user/rank" className="nav-link">랭킹</Link>
+                    <Link to="/user/mission" className="nav-link">미션</Link>
+                    <Link to="/weather" className="nav-link">날씨 예보</Link>
+                    <NavDropdown title="마이페이지" id="basic-nav-dropdown">
+                        <Link to="/mypage" className="dropdown-item">회원 수정</Link>
+                        <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
+                        <NavDropdown.Divider/>
+                        <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
+                    </NavDropdown>
+                </>
             ) : (
-              <>
-                <Link to="/user/rank" className="nav-link">랭킹</Link>
-                <Link to="/user/login" className="nav-link">로그인</Link>
+                <>
+                    <Link to="/user/rank" className="nav-link">랭킹</Link>
+                    <Link to="/user/login" className="nav-link">로그인</Link>
                 <Link to="/user/signup" className="nav-link">회원가입</Link>
               </>
             )}
