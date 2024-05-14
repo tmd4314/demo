@@ -41,6 +41,7 @@
   margin: 10px;
   text-align: center;
 }
+
 .trail-name1 {
   display: flex;
   flex-wrap: wrap;
@@ -81,8 +82,10 @@
   border-radius: 100px;
   width: 100px;
   height: 40px;
-  transition: 0.3s;
+  transition: .3s;
+  margin: 10px; /* 각 버튼 사이의 간격을 조정합니다. */
 }
+
 .trail-name1 button {
   font-family: monospace;
   background-color: #fff;
@@ -125,6 +128,7 @@
 #road7:hover {
   background-color: #f0e68c;
 }
+
 #road11 {
   background-color: #b0c4de;
 }
