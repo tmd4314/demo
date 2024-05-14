@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container as MapDiv, useNavermaps } from 'react-naver-maps';
+import { Link } from 'react-router-dom';
 
 const MapWithPanoramaAndRoute = () => {
     const navermaps = useNavermaps();
@@ -106,16 +107,16 @@ const MapWithPanoramaAndRoute = () => {
 
     return (
         <div>
-                    <br/><h3>어리목 탐방로</h3><br/>
-                        <div className="trail-name1">
-                        <button id="road11" onClick={() => window.location.href = "/user/ar"}>어리목탐방로</button>
-                        <button id="road12" onClick={() => window.location.href = "/user/ys"}>영실탐방로</button>
-                        <button id="road13" onClick={() => window.location.href = "/user/sp"}>성판악탐방로</button>
-                        <button id="road14" onClick={() => window.location.href = "/user/as"}>어승생악탐방로</button>
-                        <button id="road15" onClick={() => window.location.href = "/user/dn"}>돈내코탐방로</button>
-                        <button id="road16" onClick={() => window.location.href = "/user/sg"}>석굴암탐방로</button>
-                        <button id="road17" onClick={() => window.location.href = "/user/gs"}>관음사탐방로</button><br/>
-                        </div><br/>
+            <br/><h3>석굴암 탐방로</h3><br/>
+              <div className="trail-name1">
+                <Link to="/user/ar"><button id="road11">어리목탐방로</button></Link>
+                <Link to="/user/ys"><button id="road12">영실탐방로</button></Link>
+                <Link to="/user/sp"><button id="road13">성판악탐방로</button></Link>
+                <Link to="/user/as"><button id="road14">어승생악탐방로</button></Link>
+                <Link to="/user/dn"><button id="road15">돈내코탐방로</button></Link>
+                <Link to="/user/sg"><button id="road16">석굴암탐방로</button></Link>
+                <Link to="/user/gs"><button id="road17">관음사탐방로</button></Link><br/>
+              </div><br/>
             <MapDiv id="map"
                 style={{
                     position: 'relative',
