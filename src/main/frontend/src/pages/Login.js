@@ -51,11 +51,6 @@ function Login() {
             {error}
           </div>
         )}
-        {successMessage && (
-          <div className="alert alert-success" role="alert">
-            {successMessage}
-          </div>
-        )}
 
         <div className='login-box'>
           <h3>로그인</h3>

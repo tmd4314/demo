@@ -77,7 +77,11 @@ function Signup() {
   return (
     <div>
       <h2>회원가입</h2>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {errorMessage && (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
       <Form onSubmit={handleSubmit}>
         <input type="hidden" name="_csrf" value={csrfToken} />
         <Form.Group controlId="formBasicUserid">

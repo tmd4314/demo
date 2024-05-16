@@ -8,7 +8,7 @@ const RankingBoard = () => {
   useEffect(() => {
     const fetchRank = async () => {
       try {
-        const response = await axios.get('/user/Ranking');
+        const response = await axios.get('/user/ranking');
         setRanking(response.data);
       } catch (error) {
         console.error('Error fetching Rank:', error);
@@ -25,13 +25,15 @@ const RankingBoard = () => {
       <table className="table">
         <thead>
           <tr>
+            <th>Rank</th>
             <th>userId</th>
             <th>TotalPoint</th>
           </tr>
         </thead>
         <tbody>
-          {Ranking.map((Ranking) => (
+          {Ranking.map((Ranking, index) => (
             <tr key={Ranking.no}>
+              <td>{index + 1}</td> {/* 랭킹을 순서대로 표시 */}
               <td>{Ranking.userId}</td>
               <td>{Ranking.totalPoint}</td>
               <td>

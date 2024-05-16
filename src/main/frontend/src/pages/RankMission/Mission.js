@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // react-router-dom의 Link 사용
 import axios from 'axios';
 
 
@@ -18,11 +19,6 @@ const MissionBoard = () => {
     fetchMissions();
   }, []);
 
-  const handleChallengeClick = (mission) => {
-    console.log('Challenging mission:', mission);
-    // 여기에 도전하기 버튼이 클릭되었을 때 수행할 동작 추가
-  };
-
   return (
     <div className="container">
       <h1 className="my-4">미션 게시판</h1>
@@ -40,12 +36,11 @@ const MissionBoard = () => {
               <td>{mission.route}</td>
               <td>{mission.point}</td>
               <td>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleChallengeClick(mission)}
-                >
-                  도전하기
-                </button>
+                <Link to={`/user/mission/${mission.id}`}>
+                  <button className="btn btn-primary">
+                    도전하기
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}
