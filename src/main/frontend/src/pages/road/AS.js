@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Container as MapDiv, useNavermaps } from 'react-naver-maps';
 import { Link } from 'react-router-dom';
 
+import '../../css/road.css';
+
 const MapWithPanoramaAndRoute = () => {
     const navermaps = useNavermaps();
     const panoramaRef = useRef(null);
@@ -106,26 +108,34 @@ const MapWithPanoramaAndRoute = () => {
     };
 
     return (
-    <div>
-                <br/><h3>어승생악 탐방로</h3><br/>
-                      <div className="trail-name1">
-                        <Link to="/user/ar"><button id="road11">어리목탐방로</button></Link>
-                        <Link to="/user/ys"><button id="road12">영실탐방로</button></Link>
-                        <Link to="/user/sp"><button id="road13">성판악탐방로</button></Link>
-                        <Link to="/user/as"><button id="road14">어승생악탐방로</button></Link>
-                        <Link to="/user/dn"><button id="road15">돈내코탐방로</button></Link>
-                        <Link to="/user/sg"><button id="road16">석굴암탐방로</button></Link>
-                        <Link to="/user/gs"><button id="road17">관음사탐방로</button></Link><br/>
-                      </div><br/>
-            <MapDiv id="map"
-                style={{
+        <div>
+            <div className='road-menu'>
+                <div className="road-menu-btn">
+                    <Link to="/user/ar"><button id="arBtn">어리목탐방로</button></Link>
+                    <Link to="/user/ys"><button id="ysBtn">영실탐방로</button></Link>
+                    <Link to="/user/sp"><button id="spBtn">성판악탐방로</button></Link>
+                    <Link to="/user/as"><button id="asBtn" className="asBtn">어승생악탐방로</button></Link>
+                    <Link to="/user/dn"><button id="dnBtn">돈내코탐방로</button></Link>
+                    <Link to="/user/sg"><button id="sgBtn">석굴암탐방로</button></Link>
+                    <Link to="/user/gs"><button id="gsBtn">관음사탐방로</button></Link><br/>
+                </div>
+            </div>
+            <div className='map'>
+                <div className='map-info'>
+                    <h3>지도로 보는 한라산</h3>
+                    <h5>어승생악 탐방로</h5>
+                    <p>표시된 곳을 눌러면 체험할 수 있습니다.</p>                      
+                </div>
+                <MapDiv id="map" style={{
                     position: 'relative',
                     width: '100%',
                     height: '600px',
                     margin: '10px',
-                }}
-            />
-         <br/><div ref={panoramaRef} style={{width: '100%', height: '600px', margin: '10px'}} ></div>
+                }} />
+                <div ref={panoramaRef} style={{width: '100%', height: '600px', margin: '10px'}} ></div>
+            </div>
+            <div className='trail-info'>
+
                      <p><br/> <h3>총1.3㎞ [탐방안내소 → 어승생악정상(1.3㎞)] </h3><br/>
                         어승생악은 가벼운 등산을 원하는 탐방객이 즐겨찾는 오름으로서 자연생태가 잘 보존되어 있으며, 자연학습탐방로로 활용되고 있다. 날씨가 쾌청한 날에는 멀리 추자도, 비양도, 성산일출봉이 한눈에 내려다보이며 어승생악 정상까지는 1.3Km이다. 탐방소요시간은 편도 약 30분이며, 어리목 탐방안내소 옆에 입구가 있다.<br/>
                        <br/> 해발 1,169m 어승생악 정상에는 1945년 당시 만들어진 일제군사시설인 토치카가 남아있으며, 내부는 아직도 견고하여 5~6명이 설 수 있는 공간이 있다. 참호를 통해 서로 연결되어 있으며, 어승생악 허리의 지하요새와 통하게 되어 있었으나 지금은 함몰되어 막혀있다.<br/>
@@ -133,7 +143,8 @@ const MapWithPanoramaAndRoute = () => {
                        <br/><br/> 매     점 : 어승생악탐방로 전구간은 매점이 없으므로 사전에 산행에 필요한 물품(식수, 간단한 먹거리 등)은 철저히 준비하여 주시기 바랍니다. 단, 물과 음료수는 탐방로 입구 자판기 이용 구입 가능
                        <br/><br/>기타 문의 : 한라산국립공원관리소 064)713-9950~1
                          </p>
-                 </div>
+            </div>
+        </div>
     );
 };
 

@@ -3,6 +3,8 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; // React Router의 Link를 가져옵니다.
 import axios from 'axios';
 
+import '../css/App.css';
+
 function NavbarComponent() {
     const [isAuthenticated, setIsAuthenticated] = useState(
         localStorage.getItem('isAuthenticated') === 'true' // 저장된 인증 상태 가져오기입니다.
@@ -26,38 +28,39 @@ function NavbarComponent() {
       };
 
   return (
-
-    <Navbar expand="lg" className="bg-body-tertiary border-bottom">
-      <Container fluid>
-        <Navbar.Brand href="/">봉우리 원정대</Navbar.Brand>
-        
-        <Navbar.Toggle aria-controls="navbarSupportedContent" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav>
-            {isAuthenticated  ? (
-                <>
-                  <Link to="/user/weather" className="nav-link">날씨</Link>
-                  <Link to="/user/rank" className="nav-link">랭킹</Link>
-                  <Link to="/user/mission" className="nav-link">미션</Link>
-                  <NavDropdown title="마이페이지" id="basic-nav-dropdown">
-                      <Link to="/mypage" className="dropdown-item">회원 수정</Link>
-                      <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
-                      <NavDropdown.Divider/>
-                      <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
-                  </NavDropdown>
+    <div className='header'>
+      <Navbar expand="lg" className="bg-body-tertiary border-bottom">
+        <Container fluid>
+          <Navbar.Brand href="/">봉우리 원정대</Navbar.Brand>
+          
+          <Navbar.Toggle aria-controls="navbarSupportedContent" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+            <Nav>
+              {isAuthenticated  ? (
+                  <>
+                    <Link to="/user/weather" className="nav-link">날씨</Link>
+                    <Link to="/user/rank" className="nav-link">랭킹</Link>
+                    <Link to="/user/mission" className="nav-link">미션</Link>
+                    <NavDropdown title="마이페이지" id="basic-nav-dropdown">
+                        <Link to="/mypage" className="dropdown-item">회원 수정</Link>
+                        <Link to="/mypagedelete" className="dropdown-item">회원 탈퇴</Link>
+                        <NavDropdown.Divider/>
+                        <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
+                    </NavDropdown>
+                  </>
+              ) : (
+                  <>
+                    <Link to="/user/weather" className="nav-link">날씨</Link>
+                    <Link to="/user/rank" className="nav-link">랭킹</Link>
+                    <Link to="/user/login" className="nav-link">로그인</Link>
+                  <Link to="/user/signup" className="nav-link">회원가입</Link>
                 </>
-            ) : (
-                <>
-                  <Link to="/user/weather" className="nav-link">날씨</Link>
-                  <Link to="/user/rank" className="nav-link">랭킹</Link>
-                  <Link to="/user/login" className="nav-link">로그인</Link>
-                <Link to="/user/signup" className="nav-link">회원가입</Link>
-              </>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </div>
   );
 }
 

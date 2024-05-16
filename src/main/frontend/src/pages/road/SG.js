@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Container as MapDiv, useNavermaps } from 'react-naver-maps';
 import { Link } from 'react-router-dom';
 
+import '../../css/road.css';
+
 const MapWithPanoramaAndRoute = () => {
     const navermaps = useNavermaps();
     const panoramaRef = useRef(null);
@@ -107,38 +109,44 @@ const MapWithPanoramaAndRoute = () => {
 
     return (
         <div>
-            <br/><h3>석굴암 탐방로</h3><br/>
-              <div className="trail-name1">
-                <Link to="/user/ar"><button id="road11">어리목탐방로</button></Link>
-                <Link to="/user/ys"><button id="road12">영실탐방로</button></Link>
-                <Link to="/user/sp"><button id="road13">성판악탐방로</button></Link>
-                <Link to="/user/as"><button id="road14">어승생악탐방로</button></Link>
-                <Link to="/user/dn"><button id="road15">돈내코탐방로</button></Link>
-                <Link to="/user/sg"><button id="road16">석굴암탐방로</button></Link>
-                <Link to="/user/gs"><button id="road17">관음사탐방로</button></Link><br/>
-              </div><br/>
-            <MapDiv id="map"
-                style={{
+            <div className='road-menu'>
+                <div className="road-menu-btn">
+                    <Link to="/user/ar"><button id="arBtn">어리목탐방로</button></Link>
+                    <Link to="/user/ys"><button id="ysBtn">영실탐방로</button></Link>
+                    <Link to="/user/sp"><button id="spBtn">성판악탐방로</button></Link>
+                    <Link to="/user/as"><button id="asBtn">어승생악탐방로</button></Link>
+                    <Link to="/user/dn"><button id="dnBtn">돈내코탐방로</button></Link>
+                    <Link to="/user/sg"><button id="sgBtn" className="sgBtn">석굴암탐방로</button></Link>
+                    <Link to="/user/gs"><button id="gsBtn">관음사탐방로</button></Link><br/>
+                </div>
+            </div>
+
+            <div className='map'>
+                <div className='map-info'>
+                    <h3>지도로 보는 한라산</h3>
+                    <h5>석굴암 탐방로</h5>
+                    <p>표시된 곳을 눌러면 체험할 수 있습니다.</p>                      
+                </div>
+                <MapDiv id="map" style={{
                     position: 'relative',
                     width: '100%',
                     height: '600px',
                     margin: '10px',
-                }}
-            />
-            <br/><div ref={panoramaRef} style={{width: '100%', height: '600px', margin: '10px'}} ></div>
-                        <p><br/>석굴암탐방로는 제주시와 인접해 있어 승용차로 약 20분 정도면 탐방로 입구에 도착 할 수 있다. 1100도로(1139번도로)변 천왕사사찰 입구에서 삼나무 숲길을 10여분 걸으면 탐방로가 시작되는 국립제주호국원 주차장에 도착한다. 석굴암 암자까지 편도 1. 5Km에 50분이 소요된다.<br/><br/>
+                }} />
+                <div ref={panoramaRef} style={{width: '100%', height: '600px', margin: '10px'}} ></div>
+            </div>
 
+            <div className='trail-info'>
+                <p><br/>석굴암탐방로는 제주시와 인접해 있어 승용차로 약 20분 정도면 탐방로 입구에 도착 할 수 있다. 1100도로(1139번도로)변 천왕사사찰 입구에서 삼나무 숲길을 10여분 걸으면 탐방로가 시작되는 국립제주호국원 주차장에 도착한다. 석굴암 암자까지 편도 1. 5Km에 50분이 소요된다.<br/><br/>
 
+                골짜기와 산세가 뛰어난 아흔아홉골에 위치한 석굴암 탐방로는 도심에서 벗어나 가볍게 등산을 원하는 탐방객들이 많이 찾는 코스다. 한라산의 깊은 계곡, 소나무와 활엽수가 혼재한 울창한 숲 사이로 스쳐가는 바람 소리가 도심속의 찌든 때를 씻어 주기에 더없이 안성맞춤인 곳이다. 계곡에 있는 석굴암은 우뚝 우뚝 선 바위들과 함께 암벽에 “南無 十六 大阿羅漢 聖衆”이란 마애명이 새겨져 있기도 하다.<br/>
 
-                           골짜기와 산세가 뛰어난 아흔아홉골에 위치한 석굴암 탐방로는 도심에서 벗어나 가볍게 등산을 원하는 탐방객들이 많이 찾는 코스다. 한라산의 깊은 계곡, 소나무와 활엽수가 혼재한 울창한 숲 사이로 스쳐가는 바람 소리가 도심속의 찌든 때를 씻어 주기에 더없이 안성맞춤인 곳이다. 계곡에 있는 석굴암은 우뚝 우뚝 선 바위들과 함께 암벽에 “南無 十六 大阿羅漢 聖衆”이란 마애명이 새겨져 있기도 하다.<br/>
-
-
-
-                          <br/><br/>대중교통 240번 버스운영 시간 -> 제주버스정보시스템 http://bus.jeju.go.kr/ 을 통해 쉽게 알아 볼 수 있다.
-                          <br/><br/> 매     점 : 석굴암탐방로 전구간은 매점이 없으므로 사전에 산행에 필요한 물품(식수, 간단한 먹거리 등)은 철저히 준비하여 주시기 바랍니다.
-                           <br/><br/>기타 문의 : 한라산국립공원관리소  064)713-9950~1
-                            </p>
-                   </div>
+                <br/><br/>대중교통 240번 버스운영 시간 -> 제주버스정보시스템 http://bus.jeju.go.kr/ 을 통해 쉽게 알아 볼 수 있다.
+                <br/><br/> 매     점 : 석굴암탐방로 전구간은 매점이 없으므로 사전에 산행에 필요한 물품(식수, 간단한 먹거리 등)은 철저히 준비하여 주시기 바랍니다.
+                <br/><br/>기타 문의 : 한라산국립공원관리소  064)713-9950~1
+                </p>
+            </div>
+        </div>
     );
 };
 

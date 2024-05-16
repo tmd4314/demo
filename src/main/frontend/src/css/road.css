@@ -1,0 +1,89 @@
+.road-menu {
+    margin-top: 10px;
+}
+
+.road-menu-btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 100%;
+    max-width: 5000px; /* 요소가 너무 넓어질 경우 최대 너비 설정 */
+    width: 100%; /* 부모 요소에 맞게 가로 폭 설정 */
+}
+
+.road-menu-btn button {
+    font-family: monospace;
+    border: none;
+    border-radius: 100px;
+    width: 150px;
+    height: 40px;
+    transition: 0.3s;
+    margin: 10px; /* 각 버튼 사이의 간격을 조정합니다. */
+}
+
+
+/* 버튼을 누르기 전 마우스를 올리면 나타나는 색상 */
+#arBtn:hover {
+    background-color: #b0c4de;
+}
+
+#ysBtn:hover {
+    background-color: #8fbc8f;
+}
+
+#spBtn:hover {
+    background-color: #ffb6c1;
+}
+
+#asBtn:hover {
+    background-color: #a0dddd;
+}
+
+#dnBtn:hover {
+    background-color: #a995d1;
+}
+
+#sgBtn:hover {
+    background-color: #e7804e;
+}
+
+#gsBtn:hover {
+    background-color: #f0e68c;
+}
+
+/* 버튼을 누른 후 남아 있는 색상 */
+.arBtn {
+    background-color: #b0c4de;
+}
+
+.ysBtn {
+    background-color: #8fbc8f;
+}
+
+.spBtn {
+    background-color: #ffb6c1;
+}
+
+.asBtn{
+    background-color: #a0dddd;
+}
+
+.dnBtn {
+    background-color: #a995d1;
+}
+
+.sgBtn {
+    background-color: #e7804e;
+}
+
+.gsBtn {
+    background-color: #f0e68c;
+}
+
+.map {
+    margin-top: 20px;
+}
+
+.map-info {
+    margin: 10px;
+}
