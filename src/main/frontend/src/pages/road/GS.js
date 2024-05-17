@@ -12,20 +12,20 @@ const MapWithPanoramaAndRoute = () => {
     const [currentInfoWindow, setCurrentInfoWindow] = useState(null); // 현재 열린 InfoWindow 저장
 
     useEffect(() => {
-        if (navermaps && panoramaRef.current) {
-            const map = new navermaps.Map('map', {
-                center: new navermaps.LatLng(33.392044, 126.543971),
-                zoom: 13,
-            });
+            if (navermaps && panoramaRef.current) {
+                const map = new navermaps.Map('map', {
+                    center: new navermaps.LatLng(33.392044, 126.543971),
+                    zoom: 13,
+                });
 
-           const points = [
-                   { lat:  33.421384, lng: 126.550326, content:'마커 1 정보' },
-                   // Add more points here as needed
-                   { lat: 33.390500, lng: 126.537960,  content: '마커 3 정보'},
-                   { lat: 33.383450, lng: 126.534770, content:'마커 1 정보' },
-                   { lat: 33.376740, lng: 126.530720, content: '마커 3 정보'},
-                   { lat: 33.360962, lng: 126.535637, content:'마커 1 정보' }
-               ];
+               const points = [
+                       { lat:  33.421384, lng: 126.550326, content:'관음사지구 야영장' },
+                       // Add more points here as needed
+                       { lat: 33.390500, lng: 126.537960,  content: '탐라 계곡'},
+                       { lat: 33.383450, lng: 126.534770, content:'개미등' },
+                       { lat: 33.376740, lng: 126.530720, content: '삼각봉 대피소(1,500m)'},
+                       { lat: 33.360962, lng: 126.535637, content:'정상(동능)' }
+                   ];
 
             const markers = points.map((point, index) => {
                 const marker = new navermaps.Marker({

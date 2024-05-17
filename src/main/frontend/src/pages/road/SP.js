@@ -11,21 +11,21 @@ const MapWithPanoramaAndRoute = () => {
     const [panorama, setPanorama] = useState(null);
     const [currentInfoWindow, setCurrentInfoWindow] = useState(null); // 현재 열린 InfoWindow 저장
 
-    useEffect(() => {
-        if (navermaps && panoramaRef.current) {
-            const map = new navermaps.Map('map', {
-                center: new navermaps.LatLng(33.372633, 126.572627),
-                zoom: 14,
-            });
+     useEffect(() => {
+            if (navermaps && panoramaRef.current) {
+                const map = new navermaps.Map('map', {
+                    center: new navermaps.LatLng(33.372633, 126.572627),
+                    zoom: 13,
+                });
 
-           const points = [
-                   { lat: 33.384800, lng: 126.618999 ,content:'마커 1 정보' },
-                   // Add more points here as needed
-                   {lat: 33.380000, lng: 126.581381  ,content: '마커 3 정보'},
-                   {lat: 33.373330, lng: 126.568600 ,content:'마커 1 정보' },
-                   {lat: 33.369430, lng: 126.555590 ,content: '마커 3 정보'},
-                   {lat: 33.360962, lng: 126.535637 ,content:'마커 1 정보' }
-               ];
+               const points = [
+                       { lat: 33.384800, lng: 126.618999 ,content:'성판악 탐방안내소' },
+                       // Add more points here as needed
+                       {lat: 33.380000, lng: 126.581381  ,content: '속밭 대피소'},
+                       {lat: 33.373330, lng: 126.568600 ,content:'사라오름 입구' },
+                       {lat: 33.369430, lng: 126.555590 ,content: '진달래밭(1,500m)'},
+                       {lat: 33.360962, lng: 126.535637 ,content:'정상(동능)' }
+                   ];
 
             const markers = points.map((point, index) => {
                 const marker = new navermaps.Marker({

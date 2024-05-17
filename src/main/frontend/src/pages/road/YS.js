@@ -11,22 +11,22 @@ const MapWithPanoramaAndRoute = () => {
     const [panorama, setPanorama] = useState(null);
     const [currentInfoWindow, setCurrentInfoWindow] = useState(null); // 현재 열린 InfoWindow 저장
 
-    useEffect(() => {
-        if (navermaps && panoramaRef.current) {
-            const map = new navermaps.Map('map', {
-                center: new navermaps.LatLng(33.357828, 126.511527),
-                zoom: 15,
-            });
+   useEffect(() => {
+           if (navermaps && panoramaRef.current) {
+               const map = new navermaps.Map('map', {
+                   center: new navermaps.LatLng(33.357828, 126.511527),
+                   zoom: 14,
+               });
 
-            const points = [
-                    { lat:  33.348498, lng: 126.4966031, content: '마커 1 정보' },
-                    // Add more points here as needed
-                    { lat: 33.358958, lng: 126.502381,  content: '마커 2 정보' },
-                    { lat: 33.362130, lng: 126.517760,  content: '마커 3 정보' },
-                    { lat: 33.362250, lng: 126.521068, content: '마커 4 정보' },
-                    { lat: 33.354514, lng: 126.534040,  content: '마커 5 정보' }
+               const points = [
+                       { lat:  33.348498, lng: 126.4966031, content: '영실 탐방안내소' },
+                       // Add more points here as needed
+                       { lat: 33.358958, lng: 126.502381,  content: '영실 탐방로 입구' },
+                       { lat: 33.362130, lng: 126.517760,  content: '병풍 바위' },
+                       { lat: 33.362250, lng: 126.521068, content: '윗세 오름' },
+                       { lat: 33.354514, lng: 126.534040,  content: '남벽 분기점' }
 
-                ];
+                   ];
 
             const markers = points.map((point, index) => {
                 const marker = new navermaps.Marker({

@@ -12,19 +12,19 @@ const MapWithPanoramaAndRoute = () => {
     const [currentInfoWindow, setCurrentInfoWindow] = useState(null); // 현재 열린 InfoWindow 저장
 
     useEffect(() => {
-        if (navermaps && panoramaRef.current) {
-            const map = new navermaps.Map('map', {
-                center: new navermaps.LatLng( 33.369500, 126.517075),
-                zoom: 14,
-            });
+            if (navermaps && panoramaRef.current) {
+                const map = new navermaps.Map('map', {
+                    center: new navermaps.LatLng( 33.369500, 126.517075),
+                    zoom: 13,
+                });
 
-            const points = [
-                { lat: 33.3926876, lng: 126.4948419, content: '마커 1 정보' },
-                { lat: 33.375200, lng: 126.499150, content: '마커 2 정보' },
-                { lat: 33.369500, lng: 126.507675, content: '마커 3 정보' },
-                { lat: 33.362130, lng: 126.517760, content: '마커 4 정보' },
-                { lat: 33.354514, lng: 126.534040, content: '마커 5 정보' }
-            ];
+                const points = [
+                    { lat: 33.3926876, lng: 126.4948419, content: '어리목 탐방안내소' },
+                    { lat: 33.375200, lng: 126.499150, content: '사제비 동산' },
+                    { lat: 33.369500, lng: 126.507675, content: '만세 동산' },
+                    { lat: 33.362130, lng: 126.517760, content: '윗세 오름' },
+                    { lat: 33.354514, lng: 126.534040, content: '남벽 분기점' }
+                ];
 
             const markers = points.map((point, index) => {
                 const marker = new navermaps.Marker({

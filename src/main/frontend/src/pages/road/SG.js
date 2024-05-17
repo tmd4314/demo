@@ -11,18 +11,18 @@ const MapWithPanoramaAndRoute = () => {
     const [panorama, setPanorama] = useState(null);
     const [currentInfoWindow, setCurrentInfoWindow] = useState(null); // 현재 열린 InfoWindow 저장
 
-    useEffect(() => {
-        if (navermaps && panoramaRef.current) {
-            const map = new navermaps.Map('map', {
-                center: new navermaps.LatLng(33.407000, 126.499011),
-                zoom: 16,
-            });
+     useEffect(() => {
+            if (navermaps && panoramaRef.current) {
+                const map = new navermaps.Map('map', {
+                    center: new navermaps.LatLng(33.407000, 126.499011),
+                    zoom: 16,
+                });
 
-           const points = [
-                              { lat:  33.410956, lng: 126.4943619, content: '마커 3 정보' },
-                              // Add more points here as needed
-                               { lat: 33.402650, lng: 126.5021070 ,content:'마커 1 정보' }
-                          ];
+               const points = [
+                                  { lat:  33.410956, lng: 126.4943619, content: '국립호국원 주차장' },
+                                  // Add more points here as needed
+                                   { lat: 33.402650, lng: 126.5021070 ,content:'석굴암' }
+                              ];
 
             const markers = points.map((point, index) => {
                 const marker = new navermaps.Marker({
