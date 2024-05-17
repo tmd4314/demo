@@ -1,0 +1,13 @@
+.verification-code-input {
+  display: flex;
+  gap: 10px;
+}
+
+.verification-code-input input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

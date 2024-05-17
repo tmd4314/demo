@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../../css/VerificationCodeInput.css';
 
 const MissionDetail = () => {
   const { missionId } = useParams();
@@ -8,16 +9,17 @@ const MissionDetail = () => {
   const [startPassword, setStartPassword] = useState('');
   const [endPassword, setEndPassword] = useState('');
   const [error, setError] = useState('');
-  const [inputStartPassword, setInputStartPassword] = useState('');
-  const [inputEndPassword, setInputEndPassword] = useState('');
   const [missionStarted, setMissionStarted] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [startValues, setStartValues] = useState(['', '', '']);
+  const [endValues, setEndValues] = useState(['', '', '']);
+  const startInputs = useRef([]);
+  const endInputs = useRef([]);
 
   useEffect(() => {
     const fetchMission = async () => {
       try {
         const response = await axios.get(`/user/mission/${missionId}`);
-       // console.log('Mission data:', response.data); // 미션 데이터 콘솔에 출력
         setMission(response.data);
         setLoading(false);
       } catch (error) {
@@ -29,6 +31,13 @@ const MissionDetail = () => {
   }, [missionId]);
 
   const handleStartMission = async () => {
+    const inputStartPassword = startValues.join('');
+
+    if (inputStartPassword.length < 3) {
+      setError('Please enter the complete 3-digit code.');
+      return;
+    }
+
     try {
       const response = await axios.get(`/user/mission/${missionId}/startpassword`);
       const fetchedStartPassword = response.data;
@@ -46,6 +55,13 @@ const MissionDetail = () => {
   };
 
   const handleCompleteMission = async () => {
+    const inputEndPassword = endValues.join('');
+
+    if (inputEndPassword.length < 3) {
+      setError('Please enter the complete 3-digit code.');
+      return;
+    }
+
     try {
       const response = await axios.post(`/user/mission/${missionId}/complete`, {
         userId: '사용자 ID',
@@ -62,6 +78,26 @@ const MissionDetail = () => {
     return <div>Loading...</div>;
   }
 
+  const handleChange = (e, index, setValues, values, inputs) => {
+    const value = e.target.value;
+    if (/^[0-9]$/.test(value) || value === '') {
+      const newValues = [...values];
+      newValues[index] = value;
+      setValues(newValues);
+
+      // Move to next input if value is entered
+      if (value && index < inputs.current.length - 1) {
+        inputs.current[index + 1].focus();
+      }
+    }
+  };
+
+  const handleKeyDown = (e, index, inputs) => {
+    if (e.key === 'Backspace' && !inputs.current[index].value && index > 0) {
+      inputs.current[index - 1].focus();
+    }
+  };
+
   return (
     <div className="container">
       <h1 className="my-4">미션 상세페이지</h1>
@@ -77,22 +113,38 @@ const MissionDetail = () => {
           {missionStarted ? (
             <div>
               <p>End Password:</p>
-              <input
-                type="text"
-                value={inputEndPassword}
-                onChange={(e) => setInputEndPassword(e.target.value)}
-              />
-              <button className="btn btn-primary" onClick={handleCompleteMission}>미션 완료하기</button>
+              <div className="verification-code-input">
+                {endValues.map((value, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    maxLength="1"
+                    value={value}
+                    onChange={(e) => handleChange(e, index, setEndValues, endValues, endInputs)}
+                    onKeyDown={(e) => handleKeyDown(e, index, endInputs)}
+                    ref={(el) => (endInputs.current[index] = el)}
+                  />
+                ))}
+                <button className="btn btn-primary" onClick={handleCompleteMission}>미션 완료하기</button>
+              </div>
             </div>
           ) : (
             <div>
               <p>Start Password:</p>
-              <input
-                type="text"
-                value={inputStartPassword}
-                onChange={(e) => setInputStartPassword(e.target.value)}
-              />
-              <button className="btn btn-primary" onClick={handleStartMission}>미션 시작하기</button>
+              <div className="verification-code-input">
+                {startValues.map((value, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    maxLength="1"
+                    value={value}
+                    onChange={(e) => handleChange(e, index, setStartValues, startValues, startInputs)}
+                    onKeyDown={(e) => handleKeyDown(e, index, startInputs)}
+                    ref={(el) => (startInputs.current[index] = el)}
+                  />
+                ))}
+                <button className="btn btn-primary" onClick={handleStartMission}>미션 시작하기</button>
+              </div>
             </div>
           )}
         </div>
