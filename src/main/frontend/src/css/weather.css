@@ -3,7 +3,7 @@
     border: 1px solid #ccc;
     margin-bottom: 30px;
     flex: 0 0 auto;
-    width: 95px;
+    width: 140px;
 }
 
 .weather-container{
@@ -12,4 +12,8 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     max-width: 100%;
+}
+.chart-section{
+    max-width: 500%;
+    height:600px;
 }
