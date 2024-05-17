@@ -19,6 +19,8 @@ import Mission from './pages/RankMission/Mission';
 import Rank from './pages/RankMission/Rank';
 import MissionDetail from './pages/RankMission/MissionDetail';
 
+
+
 function App() {
   return (
     <Router>
@@ -40,11 +42,7 @@ function App() {
               <Route exact path="/user/as" element={<AS />} />
               <Route exact path="/user/mission" element={<Mission />}/>
               <Route exact path="/user/rank" element={<Rank />}/>
-              <Route exact path="/user/mission/1" element={<MissionDetail />}/>
-              <Route exact path="/user/mission/2" element={<MissionDetail />}/>
-              <Route exact path="/user/mission/3" element={<MissionDetail />}/>
-              <Route exact path="/user/mission/4" element={<MissionDetail />}/>
-              <Route exact path="/user/mission/5" element={<MissionDetail />}/>
+              <Route exact path="/user/mission/:missionId" element={<MissionDetail />}/>
             </Routes>
           </Container>
         </div>

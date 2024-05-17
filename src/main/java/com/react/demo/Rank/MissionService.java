@@ -24,23 +24,6 @@ public class MissionService {
     private RankingRepository rankingRepository;
 
     @Transactional
-    public String startMission(Long missionId, Long userid, String startPassword) {
-        User user = userRepository.findByUserid(String.valueOf(userid)).orElseThrow(() -> new RuntimeException("User not found"));
-        Mission mission = missionRepository.findById(missionId).orElseThrow(() -> new RuntimeException("Mission not found"));
-
-        if (!mission.getStartPassword().equals(startPassword)) {
-            throw new RuntimeException("Invalid start password");
-        }
-
-        UserMission userMission = new UserMission();
-        userMission.setUserId(user.getUserid());
-        userMission.setMissionId(mission.getId().toString());
-        userMission.setEarnedPoints(0); // 미션 시작 시 점수는 0
-        userMissionRepository.save(userMission);
-
-        return "Mission started";
-    }
-    @Transactional
     public String completeMission(Long missionId, Long userid, String endPassword) {
         User user = userRepository.findByUserid(String.valueOf(userid)).orElseThrow(() -> new RuntimeException("User not found"));
         Mission mission = missionRepository.findById(missionId).orElseThrow(() -> new RuntimeException("Mission not found"));
