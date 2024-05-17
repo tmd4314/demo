@@ -13,6 +13,8 @@ import { Link , useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
 
+import Carousel from 'react-bootstrap/Carousel';
+
 function HomePage() {
   const [currentPhoto, setCurrentPhoto] = useState(기초); // 초기값으로 기초 이미지 설정
   //날씨
@@ -20,6 +22,8 @@ function HomePage() {
  const [error, setError] = useState(null);
  const [currentTime, setCurrentTime] = useState('');
  const navigate = useNavigate();
+
+ 
 
 
 
@@ -34,24 +38,22 @@ function HomePage() {
   };
 
   const getWeatherInfo = async () => {
-      try {
-        // GET 요청 보내기
-       const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=33.360949&lon=126.529803&appid=5f5fe71124b23c5deb3f48c70c686d1c&lang=kr&units=metric');
-       const timeResponse = await axios.get(
-               'http://worldtimeapi.org/api/timezone/Asia/Seoul'
-             );
-        // 받은 데이터 설정
-        setWeatherInfo(response.data);
-        setCurrentTime(timeResponse.data.datetime);
-      } catch (error) {
-        console.error('Error while fetching weather data:', error);
-      }
-    };
+    try {
+      // GET 요청 보내기
+      const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=33.360949&lon=126.529803&appid=5f5fe71124b23c5deb3f48c70c686d1c&lang=kr&units=metric');
+      const timeResponse = await axios.get('http://worldtimeapi.org/api/timezone/Asia/Seoul');
+      // 받은 데이터 설정
+      setWeatherInfo(response.data);
+      setCurrentTime(timeResponse.data.datetime);
+    } catch (error) {
+      console.error('Error while fetching weather data:', error);
+    }
+  };
 
     // 페이지 로드 시 Weather 정보 가져오기
-    useEffect(() => {
-      getWeatherInfo();
-    }, []);
+  useEffect(() => {
+    getWeatherInfo();
+  }, []);
 
   return (
     <>
@@ -75,28 +77,57 @@ function HomePage() {
           </div>
         </div>
       </div>
-            <div className="weather-box" onClick={() => navigate('/user/weather')} >
-              {error && <p>{error}</p>}
-              {weatherInfo ? (
-                <div>
-                  <p>날씨 정보:</p>
-                    <p>지역: {weatherInfo.name}</p>
-                    <p>현재 온도: {weatherInfo.main.temp}°C</p>
-                    <p>날씨:  {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={65} color='#f00' />}
-                             {weatherInfo.weather[0].description === "Rain" && <WiRain size={65} color='#0080ff' />}
-                             {weatherInfo.weather[0].description === "Snow" && <WiSnow size={65} color='#0080ff' />}
-                             {weatherInfo.weather[0].description === "Clouds" && <WiCloudy size={65} color='#0080ff' />}
-                             {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={65} color='#0080ff'/>}
-                             {weatherInfo.weather[0].description === "Mist" && <WiFog size={65} color='#0080ff' />}
-                             {weatherInfo.weather[0].description === "Fog" && <WiFog size={65} color='#0080ff' />} </p>
-                    <p>처저 기온: {weatherInfo.main.temp_min}°C</p>
-                    <p>최고 기온: {weatherInfo.main.temp_max}°C</p>
-                    <p>현재 시간: {currentTime}</p>
-                </div>
-              ) : (
-                <p>날씨 정보를 불러오는 중...</p>
-              )}
-            </div>
+
+      <div className="weather-box">
+        {error && <p>{error}</p>}
+        {weatherInfo ? (
+          <div>
+            <p>날씨 정보:</p>
+              <p>지역: {weatherInfo.name}</p>
+              <p>현재 온도: {weatherInfo.main.temp}°C</p>
+              <p>날씨:  {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={65} color='#f00' />}
+                        {weatherInfo.weather[0].description === "Rain" && <WiRain size={65} color='#0080ff' />}
+                        {weatherInfo.weather[0].description === "Snow" && <WiSnow size={65} color='#0080ff' />}
+                        {weatherInfo.weather[0].description === "Clouds" && <WiCloudy size={65} color='#0080ff' />}
+                        {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={65} color='#0080ff'/>}
+                        {weatherInfo.weather[0].description === "Mist" && <WiFog size={65} color='#0080ff' />}
+                        {weatherInfo.weather[0].description === "Fog" && <WiFog size={65} color='#0080ff' />} </p>
+              <p>처저 기온: {weatherInfo.main.temp_min}°C</p>
+              <p>최고 기온: {weatherInfo.main.temp_max}°C</p>
+              <p>현재 시간: {currentTime}</p>
+          </div>
+        ) : (
+          <p>날씨 정보를 불러오는 중...</p>
+        )}
+      </div>
+
+        <Carousel>
+          <Carousel.Item>
+            <p>1</p>
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          
+          <Carousel.Item>
+            <p>2</p>
+            <Carousel.Caption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <p>3</p>
+            <Carousel.Caption>
+              <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+      </Carousel>
     </>
   );
 
