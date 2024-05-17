@@ -116,7 +116,7 @@ const MissionDetail = () => {
   }
 
   return (
-    <div className="container">
+    <div>
       <h1 className="my-4">미션 상세페이지</h1>
       {error && (
         <div className="alert alert-danger" role="alert">

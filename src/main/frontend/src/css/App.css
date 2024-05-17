@@ -11,12 +11,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
  
- .nanum-pen-script-regular {
-  font-family: "Nanum Pen Script", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -649,7 +643,7 @@ progress {
 }
 
 .container {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 /* @media (min-width: 576px) {
@@ -1970,9 +1964,6 @@ progress {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-}
-.form-label {
-  margin-bottom: 0.5rem;
 }
 
 .col-form-label {

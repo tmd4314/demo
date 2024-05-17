@@ -20,7 +20,7 @@ const MissionBoard = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       <h1 className="my-4">미션 게시판</h1>
       <table className="table">
         <thead>

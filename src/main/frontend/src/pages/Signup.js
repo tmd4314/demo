@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 
+import '../css/Signup.css';
+
 function Signup() {
   const [csrfToken, setCsrfToken] = useState('');
   const [userCreateForm, setUserCreateForm] = useState({
@@ -76,7 +78,7 @@ function Signup() {
 
   return (
     <div>
-      <h2>회원가입</h2>
+      <h2 className="my-4">회원가입</h2>
       {errorMessage && (
         <div className="alert alert-danger" role="alert">
           {errorMessage}
@@ -84,32 +86,32 @@ function Signup() {
       )}
       <Form onSubmit={handleSubmit}>
         <input type="hidden" name="_csrf" value={csrfToken} />
-        <Form.Group controlId="formBasicUserid">
+        <Form.Group controlId="formBasicUserid" className='input-box'>
           <Form.Label>ID</Form.Label>
           <Form.Control type="text" placeholder="ID (3자 이상, 25자 이하)" name="userid" value={userCreateForm.userid} onChange={handleInputChange} minLength={3} maxLength={25} required />
         </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
+        <Form.Group controlId="formBasicPassword" className='input-box'>
           <Form.Label>비밀번호</Form.Label>
           <Form.Control type="password" placeholder="비밀번호 (8자 이상)" name="password" value={userCreateForm.password} onChange={handleInputChange} minLength={8} required />
         </Form.Group>
 
-        <Form.Group controlId="formBasicPasswordConfirmation">
+        <Form.Group controlId="formBasicPasswordConfirmation" className='input-box'>
           <Form.Label>비밀번호 확인</Form.Label>
           <Form.Control type="password" placeholder="비밀번호 확인" name="passwordConfirmation" value={userCreateForm.passwordConfirmation} onChange={handleInputChange} required />
         </Form.Group>
 
-        <Form.Group controlId="formBasicUsername">
+        <Form.Group controlId="formBasicUsername" className='input-box'>
             <Form.Label>닉네임</Form.Label>
             <Form.Control type="text" placeholder="닉네임 (3자 이상, 25자 이하)" name="username" value={userCreateForm.username} onChange={handleInputChange} minLength={3} maxLength={25} required />
         </Form.Group>
 
-        <Form.Group controlId="formBasicPhoneNumber">
+        <Form.Group controlId="formBasicPhoneNumber" className='input-box'>
           <Form.Label>전화번호</Form.Label>
           <Form.Control type="tel" placeholder="전화번호" name="phoneNumber" value={userCreateForm.phoneNumber} onChange={handleInputChange} required />
         </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="formBasicEmail" className='input-box'>
           <Form.Label>이메일</Form.Label>
           <Form.Control type="email" placeholder="이메일" name="email" value={userCreateForm.email} onChange={handleInputChange} required />
         </Form.Group>

@@ -12,6 +12,15 @@
     margin-top: 20px;
 }
 
+.form-item {
+    margin-bottom: 10px;
+}
+
+.form-item p,
+.form-item Form.Control {
+    margin-bottom: 25px;
+}
+
 #loginBtn, #joinBtn {
     width: 100px;
 }

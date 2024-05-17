@@ -10,21 +10,20 @@
     margin-bottom: 30px;
 }
 
-.form-item {
-    margin-bottom: 5px;
-}
-
-.form-item p,
-.form-item Form.Control {
-    margin-bottom: 25px;
-}
-
 .input-me {
     margin-top: 15px;
 }
 
 .form-container {
     margin-bottom: 15px;
+}
+
+.input-box {
+    margin-bottom: 15px;
+}
+
+#loginBtn {
+    margin-right: 10px;
 }
 
 /* 미디어 쿼리: 화면 너비가 768px 미만일 때 */

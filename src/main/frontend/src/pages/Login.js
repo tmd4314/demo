@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 import '../css/Login.css';
 
 function Login() {
@@ -57,7 +58,7 @@ function Login() {
         )}
 
         <div className='login-box'>
-          <h3>로그인</h3>
+          <h2>로그인</h2>
           <div>
             <div className="form-item">
               <Form.Control type="username" placeholder="아이디" name="userid" id="userid" className="form-control" value={formData.userid} onChange={handleChange} />

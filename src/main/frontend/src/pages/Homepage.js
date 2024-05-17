@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
+
 import '../css/Home.css';
+
 import 기초  from '../img/기초.png';
 import 어리목탐방로  from '../img/어리목탐방로.png';
 import 영실탐방로  from '../img/영실탐방로.png';
@@ -9,33 +14,14 @@ import 돈내코탐방로  from '../img/돈내코탐방로.png';
 import 석굴암탐방로  from '../img/석굴암탐방로.png';
 import 관음사탐방로  from '../img/관음사탐방로.png';
 import logo from '../img/logo.png';
-import { Link , useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
 
-import Carousel from 'react-bootstrap/Carousel';
 
 function HomePage() {
   const [currentPhoto, setCurrentPhoto] = useState(기초); // 초기값으로 기초 이미지 설정
   //날씨
- const [weatherInfo, setWeatherInfo] = useState('');
- const [error, setError] = useState(null);
- const [currentTime, setCurrentTime] = useState('');
- const navigate = useNavigate();
-
- 
-
-
-
-  // 버튼에 마우스를 가져가면 해당 버튼의 이미지를 표시하는 함수
-  const handleMouseOver = (photo) => {
-    setCurrentPhoto(photo);
-  };
-
-  // 버튼에서 마우스를 떼면 초기 이미지로 변경하는 함수
-  const handleMouseOut = () => {
-    setCurrentPhoto(기초);
-  };
+  const [weatherInfo, setWeatherInfo] = useState('');
+  const [error, setError] = useState(null);
+  const [currentTime, setCurrentTime] = useState('');
 
   const getWeatherInfo = async () => {
     try {
@@ -54,6 +40,16 @@ function HomePage() {
   useEffect(() => {
     getWeatherInfo();
   }, []);
+
+  // 버튼에 마우스를 가져가면 해당 버튼의 이미지를 표시하는 함수
+  const handleMouseOver = (photo) => {
+    setCurrentPhoto(photo);
+  };
+
+  // 버튼에서 마우스를 떼면 초기 이미지로 변경하는 함수
+  const handleMouseOut = () => {
+    setCurrentPhoto(기초);
+  };
 
   return (
     <>
@@ -100,34 +96,6 @@ function HomePage() {
           <p>날씨 정보를 불러오는 중...</p>
         )}
       </div>
-
-        <Carousel>
-          <Carousel.Item>
-            <p>1</p>
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          
-          <Carousel.Item>
-            <p>2</p>
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <p>3</p>
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-      </Carousel>
     </>
   );
 
