@@ -24,25 +24,52 @@ public class MissionService {
     private RankingRepository rankingRepository;
 
     @Transactional
-    public String completeMission(Long missionId, Long userid, String endPassword) {
+    public String startMission(Long missionId, String userid, String startPassword) {
         User user = userRepository.findByUserid(String.valueOf(userid)).orElseThrow(() -> new RuntimeException("User not found"));
         Mission mission = missionRepository.findById(missionId).orElseThrow(() -> new RuntimeException("Mission not found"));
 
-        UserMission userMission = userMissionRepository.findByUserIdAndMissionId(user.getUserid(), mission.getId().toString())
-                .orElseThrow(() -> new RuntimeException("Mission not started"));
+        if (!mission.getStartPassword().equals(startPassword)) {
+            throw new RuntimeException("Invalid start password");
+        }
 
+        UserMission userMission = new UserMission();
+        userMission.setUserId(user.getUserid());
+        userMission.setMissionId(mission.getId().toString());
+        userMission.setEarnedPoints(0); // 미션 시작 시 점수는 0
+        userMissionRepository.save(userMission);
+
+        return "Mission started";
+    }
+
+    @Transactional
+    public String completeMission(Long missionId, String userid, String endPassword) {
+        // 사용자와 미션 조회
+        User user = userRepository.findByUserid(userid)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Mission mission = missionRepository.findById(missionId)
+                .orElseThrow(() -> new RuntimeException("Mission not found"));
         if (!mission.getEndPassword().equals(endPassword)) {
             throw new RuntimeException("Invalid end password");
         }
 
-        int points = Integer.parseInt(mission.getPoint());
-        userMission.setEarnedPoints(points);
-        userMissionRepository.save(userMission);
+        // 사용자 미션 조회
+        List<UserMission> userMissions = userMissionRepository.findByUserIdAndMissionIdAndEarnedPoints(user.getUserid(), mission.getId().toString(), 0);
 
-        updateRanking(user.getUserid(), points);
+        // 미션 완료 처리
+        if (userMissions.isEmpty()) {
+            throw new RuntimeException("Mission not started");
+        } else {
+            int points = Integer.parseInt(mission.getPoint());
+            for (UserMission userMission : userMissions) {
+                userMission.setEarnedPoints(points);
+                userMissionRepository.save(userMission);
+                updateRanking(userMission.getUserId(), points);
+            }
+        }
 
-        return "Mission completed with " + points + " points";
+        return "Mission completed with " + mission.getPoint() + " points";
     }
+
 
     private void updateRanking(String userId, int points) {
         Ranking ranking = rankingRepository.findByUserId(userId).orElse(new Ranking());

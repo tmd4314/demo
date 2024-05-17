@@ -25,9 +25,9 @@ const RankingBoard = () => {
       <table className="table">
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>userId</th>
-            <th>TotalPoint</th>
+            <th>순위</th>
+            <th>아이디</th>
+            <th>총점수</th>
           </tr>
         </thead>
         <tbody>

@@ -1,8 +1,5 @@
 package com.react.demo.User;
 
-import com.react.demo.SecurityConfig;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -13,12 +10,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
 
@@ -31,6 +24,7 @@ import java.util.*;
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final UserSecurityService userSecurityService;
@@ -38,7 +32,7 @@ public class UserController {
 
     @GetMapping("/signup")
     public ResponseEntity<String> signup() {
-        return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/").build();
+        return ResponseEntity.ok("signup");
     }
 
     @PostMapping("/signup")
@@ -97,7 +91,15 @@ public class UserController {
 
             // 필요에 따라 추가적인 로직 수행 가능 (예: 토큰 발급, 세션 설정 등)
 
-            return ResponseEntity.ok("로그인 성공: " + userDetails.getUsername());
+            // Optional<User>에서 User를 가져와서 username을 찾음
+            Optional<User> userOptional = userRepository.findByUserid(userDetails.getUsername());
+            if (userOptional.isPresent()) {
+                String userid = userOptional.get().getUserid();
+                String username = userOptional.get().getUsername();
+                return ResponseEntity.ok(Map.of("userid", userid, "username", username));
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("사용자 정보를 찾을 수 없습니다.");
+            }
         } catch (BadCredentialsException e) {
             // 비밀번호가 틀린 경우
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("아이디 또는 비밀번호가 일치하지 않습니다.");

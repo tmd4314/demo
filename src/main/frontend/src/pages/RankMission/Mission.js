@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // react-router-dom의 Link 사용
+import { Link, useNavigate } from 'react-router-dom'; // react-router-dom의 Link 및 useNavigate 사용
 import axios from 'axios';
-
 
 const MissionBoard = () => {
   const [missions, setMissions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMissions = async () => {
@@ -25,9 +25,9 @@ const MissionBoard = () => {
       <table className="table">
         <thead>
           <tr>
-            <th>Route</th>
-            <th>Point</th>
-            <th>Action</th> {/* 도전하기 버튼을 추가하는 열 */}
+            <th>경로</th>
+            <th>포인트</th>
+            <th>버튼</th> {/* 도전하기 버튼을 추가하는 열 */}
           </tr>
         </thead>
         <tbody>
@@ -37,9 +37,7 @@ const MissionBoard = () => {
               <td>{mission.point}</td>
               <td>
                 <Link to={`/user/mission/${mission.id}`}>
-                  <button className="btn btn-primary">
-                    도전하기
-                  </button>
+                  <button className="btn btn-primary">도전하기</button>
                 </Link>
               </td>
             </tr>

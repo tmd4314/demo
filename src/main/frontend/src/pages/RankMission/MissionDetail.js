@@ -15,6 +15,24 @@ const MissionDetail = () => {
   const [endValues, setEndValues] = useState(['', '', '']);
   const startInputs = useRef([]);
   const endInputs = useRef([]);
+  const [userid, setUserid] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuthentication = () => {
+      const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
+      setIsAuthenticated(storedIsAuthenticated === 'true');
+    };
+
+    checkAuthentication();
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const storedUserid = localStorage.getItem('userid');
+      setUserid(storedUserid);
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     const fetchMission = async () => {
@@ -39,18 +57,16 @@ const MissionDetail = () => {
     }
 
     try {
-      const response = await axios.get(`/user/mission/${missionId}/startpassword`);
-      const fetchedStartPassword = response.data;
+      const response = await axios.post(`/user/mission/${missionId}/start`, {
+        userid: userid,
+        startPassword: inputStartPassword
+      });
 
-      if (Number(fetchedStartPassword) === Number(inputStartPassword)) {
-        console.log('Mission started successfully!');
-        setMissionStarted(true);
-        setStartPassword(fetchedStartPassword);
-      } else {
-        setError('시작 비밀번호가 다릅니다. 다시 입력해주시요');
-      }
+      const fetchedStartPassword = response.data;
+      setMissionStarted(true);
     } catch (error) {
       console.error('Error starting mission:', error);
+      setError('패스워드가 틀렸다. 다시 시도해줘.');
     }
   };
 
@@ -64,19 +80,17 @@ const MissionDetail = () => {
 
     try {
       const response = await axios.post(`/user/mission/${missionId}/complete`, {
-        userId: '사용자 ID',
+        userid: userid,
         endPassword: inputEndPassword
       });
-      console.log('Mission completed successfully!');
+      window.alert("미션을 성공하셨습니다. !!!!!!")
+      window.location.href = '/';
       // 여기에 랭킹 시스템 업데이트 로직 추가 가능
     } catch (error) {
       console.error('Error completing mission:', error);
+      setError('패스워드가 틀렸다. 다시 시도해줘.');
     }
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   const handleChange = (e, index, setValues, values, inputs) => {
     const value = e.target.value;
@@ -85,7 +99,6 @@ const MissionDetail = () => {
       newValues[index] = value;
       setValues(newValues);
 
-      // Move to next input if value is entered
       if (value && index < inputs.current.length - 1) {
         inputs.current[index + 1].focus();
       }
@@ -97,6 +110,10 @@ const MissionDetail = () => {
       inputs.current[index - 1].focus();
     }
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="container">

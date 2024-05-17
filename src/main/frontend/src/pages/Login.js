@@ -23,10 +23,14 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post('/user/login', formData);
+      const { userid, username } = response.data;
       setIsAuthenticated(true);
       localStorage.setItem('isAuthenticated', 'true'); // 인증 상태 저장
+      localStorage.setItem('userid', userid);
+      localStorage.setItem('username', username);
       window.alert('로그인을 하였습니다.');
       window.location.href = '/';
+     //console.log(response);
     } catch (error) {
       console.error('Login failed:', error);
       if (error.response && error.response.data) {
@@ -63,7 +67,7 @@ function Login() {
             </div>
             <div className="button-container">
               <Button variant="primary" type="submit" id='loginBtn'>로그인</Button>
-              <Button as={Link} to="/user/signup" variant="secondary" id="signupBtn">회원가입</Button>
+              <Button as={Link} to="/user/signups" variant="secondary" id="signupBtn">회원가입</Button>
             </div>
           </div>
         </div>

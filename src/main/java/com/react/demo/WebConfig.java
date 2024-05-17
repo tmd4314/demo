@@ -12,8 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/{path:[^\\.]*}").setViewName("forward:/");
-        registry.addViewController("/user/signup").setViewName("forward:/");
-        registry.addViewController("/user/login").setViewName("forward:/");
+        registry.addViewController("/user/signups").setViewName("forward:/");
+        registry.addViewController("/user/logins").setViewName("forward:/");
         registry.addViewController("/user/weather").setViewName("forward:/");
         registry.addViewController("/user/ar").setViewName("forward:/");
         registry.addViewController("/user/as").setViewName("forward:/");
@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/user/sg").setViewName("forward:/");
         registry.addViewController("/user/sp").setViewName("forward:/");
         registry.addViewController("/user/ys").setViewName("forward:/");
-        registry.addViewController("/user/mission").setViewName("forward:/");
+        registry.addViewController("/user/missions").setViewName("forward:/");
         registry.addViewController("/user/rank").setViewName("forward:/");
         registry.addViewController("/user/mission/1").setViewName("forward:/");
         registry.addViewController("/user/mission/2").setViewName("forward:/");

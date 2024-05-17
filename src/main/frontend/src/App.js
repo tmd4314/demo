@@ -30,9 +30,9 @@ function App() {
           <Container>
             <Routes>
               <Route exact path="/" element={<HomePage />} />
-              <Route exact path="/user/login" element={<Login />} />
+              <Route exact path="/user/logins" element={<Login />} />
               <Route exact path="/user/weather" element={<Weather />} />
-              <Route exact path="/user/signup" element={<Signup />} />
+              <Route exact path="/user/signups" element={<Signup />} />
               <Route exact path="/user/ar" element={<AR />} />
               <Route exact path="/user/ys" element={<YS />} />
               <Route exact path="/user/sp" element={<SP />} />
@@ -40,7 +40,7 @@ function App() {
               <Route exact path="/user/sg" element={<SG />} />
               <Route exact path="/user/dn" element={<DN />} />
               <Route exact path="/user/as" element={<AS />} />
-              <Route exact path="/user/mission" element={<Mission />}/>
+              <Route exact path="/user/missions" element={<Mission />}/>
               <Route exact path="/user/rank" element={<Rank />}/>
               <Route exact path="/user/mission/:missionId" element={<MissionDetail />}/>
             </Routes>
