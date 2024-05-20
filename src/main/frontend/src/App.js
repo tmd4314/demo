@@ -15,9 +15,13 @@ import AS from './pages/road/AS';
 import GS from './pages/road/GS';
 import SG from './pages/road/SG';
 import DN from './pages/road/DN';
-import Mission from './pages/RankMission/Mission';
-import Rank from './pages/RankMission/Rank';
-import MissionDetail from './pages/RankMission/MissionDetail';
+import Mission from './pages/rankmission/Mission';
+import Rank from './pages/rankmission/Rank';
+import MissionDetail from './pages/rankmission/MissionDetail';
+import CCTV1 from './pages/cctv/CCTV1';
+import CCTV2 from './pages/cctv/CCTV2';
+import CCTV3 from './pages/cctv/CCTV3';
+import CCTV4 from './pages/cctv/CCTV4';
 
 
 
@@ -42,7 +46,11 @@ function App() {
               <Route exact path="/user/as" element={<AS />} />
               <Route exact path="/user/missions" element={<Mission />}/>
               <Route exact path="/user/rank" element={<Rank />}/>
-              <Route exact path="/user/missions/:missionId" element={<MissionDetail />}/> /* mission id 값까지 같이 넘겨줌 */
+              <Route exact path="/user/missions/:missionId" element={<MissionDetail />}/> {/* mission id 값까지 같이 넘겨줌 */}
+              <Route exact path="/user/cctv1" element={<CCTV1 />}/>
+              <Route exact path="/user/cctv2" element={<CCTV2 />}/>
+              <Route exact path="/user/cctv3" element={<CCTV3 />}/>
+              <Route exact path="/user/cctv4" element={<CCTV4 />}/>
             </Routes>
           </Container>
         </div>

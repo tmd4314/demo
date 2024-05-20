@@ -56,6 +56,7 @@ function NavbarComponent() {
               {isAuthenticated  ? (
                   <>
                     <Link to="/user/weather" className="nav-link" onClick={closeNavbar}>날씨</Link>
+                    <Link to="/user/cctv1" className="nav-link" onClick={closeNavbar}>CCTV</Link>
                     <Link to="/user/rank" className="nav-link" onClick={closeNavbar}>랭킹</Link>
                     <Link to="/user/missions" className="nav-link" onClick={closeNavbar}>미션</Link>
                     <NavDropdown title={username} id="basic-nav-dropdown">
@@ -68,6 +69,7 @@ function NavbarComponent() {
               ) : (
                   <>
                     <Link to="/user/weather" className="nav-link" onClick={closeNavbar}>날씨</Link>
+                    <Link to="/user/cctv1" className="nav-link" onClick={closeNavbar}>CCTV</Link>
                     <Link to="/user/rank" className="nav-link" onClick={closeNavbar}>랭킹</Link>
                     <Link to="/user/logins" className="nav-link" onClick={closeNavbar}>로그인</Link>
                   <Link to="/user/signups" className="nav-link" onClick={closeNavbar}>회원가입</Link>

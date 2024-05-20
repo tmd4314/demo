@@ -29,6 +29,10 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/user/missions/3").setViewName("forward:/");
         registry.addViewController("/user/missions/4").setViewName("forward:/");
         registry.addViewController("/user/missions/5").setViewName("forward:/");
+        registry.addViewController("/user/cctv1").setViewName("forward:/");
+        registry.addViewController("/user/cctv2").setViewName("forward:/");
+        registry.addViewController("/user/cctv3").setViewName("forward:/");
+        registry.addViewController("/user/cctv4").setViewName("forward:/");
     }
 
     @Controller
