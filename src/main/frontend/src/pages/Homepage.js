@@ -157,15 +157,13 @@ function HomePage() {
           <p>정보 불러오는 중...</p>
         )}
       </div>
-      <div className="weather-info">
-        <p style={{ fontSize: '40px' }}> {weatherInfo && weatherInfo.main.temp}°C</p>
         <div className="weather-details">
-          <p>지역: {weatherInfo && weatherInfo.name}</p>
+        <p style={{ fontSize: '40px' }}> {weatherInfo && weatherInfo.main.temp}°C</p>
+          <p>지역: 한라산 정상</p>
           <p>처저 기온: {weatherInfo && weatherInfo.main.temp_min}°C</p>
           <p>최고 기온: {weatherInfo && weatherInfo.main.temp_max}°C</p>
           <p>현재 시간: {currentTime}</p>
         </div>
-      </div>
     </div>
     <div className="weather-box" id="right-weather">
       {otherWeatherInfo ? (
@@ -185,15 +183,16 @@ function HomePage() {
                     <p>정보 불러오는 중...</p>
                   )}
           </div>
-          <div className="weather-info">
-            <p style={{ fontSize: '40px' }}> {otherWeatherInfo && otherWeatherInfo.main.temp}°C</p>
+
+
             <div className="weather-details">
-              <p>지역: {otherWeatherInfo && otherWeatherInfo.name}</p>
+            <p style={{ fontSize: '40px' }}> {otherWeatherInfo && otherWeatherInfo.main.temp}°C</p>
+              <p>지역: 제주도</p>
               <p>처저 기온: {otherWeatherInfo && otherWeatherInfo.main.temp_min}°C</p>
               <p>최고 기온: {otherWeatherInfo && otherWeatherInfo.main.temp_max}°C</p>
               <p>현재 시간: {otherCurrentTime}</p>
             </div>
-          </div>
+
         </>
       ) : (
         <p>정보 불러오는 중...</p>

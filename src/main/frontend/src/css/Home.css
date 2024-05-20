@@ -175,16 +175,16 @@
 .weather-details p {
   margin: 5px 0;
   text-align: right;
+  margin-right: 40px;
 }
 
-
 .weather-icon {
-  margin-right: 20px;
 }
 
 .weather-info {
   display: flex;
   justify-content: center;
+
 }
 
 .left-weather {

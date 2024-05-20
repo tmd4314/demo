@@ -27,11 +27,15 @@
     margin-bottom: 20px;
 }
 
-.weather-details {
+.weather-details1 {
     display: flex;
     justify-content: space-around;
 }
 
-.weather-detail {
+.weather-detail1 {
     text-align: center;
+}
+
+.weather-details1 p {
+  margin: 5px 0;
 }

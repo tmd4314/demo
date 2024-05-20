@@ -1,7 +1,6 @@
 // HomePage.js (or any other page component that needs axios)
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../css/weather.css';
 import  '../css/weather.css';
 import Layout from '../Layout';
 import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
@@ -129,11 +128,12 @@ const Weather = () => {
     return (
         <Layout>
         <div>
-            <h1 className="my-4">제주도 날씨</h1>
-            <div className="day-buttons">
-                <button onClick={() => handleDayChange('today')}>오늘</button>
-                <button onClick={() => handleDayChange('tomorrow')}>내일</button>
-                <button onClick={() => handleDayChange('dayAfterTomorrow')}>모레</button>
+            <h1 className="my-4">한라산 정상 날씨</h1>
+            <div className="detail-buttons">
+                            <button onClick={() => handleDetailChange('temperature')}>날씨</button>
+                            <button onClick={() => handleDetailChange('precipitation')}>강수 확률</button>
+                            <button onClick={() => handleDetailChange('humidity')}>습도</button>
+
             </div>
             <div className="current-weather">
                 <div>
@@ -145,10 +145,10 @@ const Weather = () => {
                     <p>습도: {currentWeather.main.humidity}%</p>
                 </div>
             </div>
-            <div className="detail-buttons">
-                <button onClick={() => handleDetailChange('temperature')}>날씨</button>
-                <button onClick={() => handleDetailChange('precipitation')}>강수 확률</button>
-                <button onClick={() => handleDetailChange('humidity')}>습도</button>
+            <div className="day-buttons">
+                            <button onClick={() => handleDayChange('today')}>오늘</button>
+                            <button onClick={() => handleDayChange('tomorrow')}>내일</button>
+                            <button onClick={() => handleDayChange('dayAfterTomorrow')}>모레</button>
             </div>
             <div className="future-weather">
                 {selectedDetail === 'temperature' && (
@@ -156,9 +156,9 @@ const Weather = () => {
                         <div className="chart-container">
                             <Line data={generateChartData()} options={chartOptions} />
                         </div>
-                        <div className="weather-details">
+                        <div className="weather-details1">
                             {filteredWeatherData.map((data, index) => (
-                                <div key={index} className="weather-detail">
+                                <div key={index} className="weather-detail1">
                                     <p>{data.main.temp}℃</p>
                                     {renderWeatherIcon(data.weather[0].main)}
                                     <p>{new Date(data.dt_txt).getHours()}:00</p>
@@ -172,9 +172,9 @@ const Weather = () => {
                         <div className="chart-container">
                             <Bar data={generateChartData()} options={chartOptions} />
                         </div>
-                        <div className="weather-details">
+                        <div className="weather-details1">
                             {filteredWeatherData.map((data, index) => (
-                                <div key={index} className="weather-detail">
+                                <div key={index} className="weather-detail1">
                                     <p>{data.pop * 100}%</p>
                                     <div className="bar" style={{ height: `${data.pop * 100}%` }}></div>
                                     <p>{new Date(data.dt_txt).getHours()}:00</p>
@@ -188,9 +188,9 @@ const Weather = () => {
                         <div className="chart-container">
                             <Bar data={generateChartData()} options={chartOptions} />
                         </div>
-                        <div className="weather-details">
+                        <div className="weather-details1">
                             {filteredWeatherData.map((data, index) => (
-                                <div key={index} className="weather-detail">
+                                <div key={index} className="weather-detail1">
                                     <p>{data.main.humidity}%</p>
                                     <p>{new Date(data.dt_txt).getHours()}:00</p>
                                 </div>
