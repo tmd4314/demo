@@ -129,3 +129,39 @@
   height: 250px; /* 높이를 300px로 설정 */
   object-fit: cover; /* 이미지 비율 유지하면서 영역에 맞게 자름 */
 }
+
+.weather-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-details {
+  margin-left: auto;
+  text-align: right;
+}
+
+.weather-details p {
+  margin: 5px 0;
+}
+
+.weather-icon {
+  margin-right: 160px;
+
+}
+
+.weather-info {
+  display: flex;
+  justify-content: center;
+
+}
