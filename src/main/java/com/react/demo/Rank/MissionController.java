@@ -40,12 +40,14 @@ public class MissionController {
         }
     }
 
+    //startpassword 비교를 위한 코드
     @GetMapping("/mission/{missionId}/startpassword")
     public ResponseEntity<String> getStartPassword(@PathVariable Long missionId) {
         String startPassword = missionRepository.getStartPasswordFromDB(missionId);
         return ResponseEntity.ok(startPassword);
     }
 
+    //endpassword 비교를 위한 코드
     @GetMapping("/mission/{missionId}/endpassword")
     public ResponseEntity<String> getEndPassword(@PathVariable Long missionId) {
         String endPassword = missionRepository.getEndPasswordFromDB(missionId);

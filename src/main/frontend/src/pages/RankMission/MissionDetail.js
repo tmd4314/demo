@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/VerificationCodeInput.css';
+import img1 from '../../missionimg/1.png';
+import img2 from '../../missionimg/2.png';
+import img3 from '../../missionimg/3.png';
+import img4 from '../../missionimg/4.png';
+import img5 from '../../missionimg/5.png';
 
 const MissionDetail = () => {
   const { missionId } = useParams();
@@ -111,6 +116,24 @@ const MissionDetail = () => {
     }
   };
 
+  const renderImage = () => {
+      const images = {
+        1: img1,
+        2: img2,
+        3: img3,
+        4: img4,
+        5: img5,
+      };
+
+      return (
+        <img
+          src={images[missionId]}
+          alt={`Mission ${missionId}`}
+          className="mission-image"
+        />
+      );
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -126,6 +149,7 @@ const MissionDetail = () => {
       {mission ? (
         <div>
           <h2>Route: {mission.route}</h2>
+          <div className="mission-images">{renderImage()}</div>
           <p>Point: {mission.point}</p>
           {missionStarted ? (
             <div>
