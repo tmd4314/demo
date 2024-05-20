@@ -60,7 +60,9 @@ function Weather() {
          <div className="weather-container">
              {weatherData.map((data, index) => (
                           <div key={index} className="weather-data">
-                              <p>시간: <br/>{data.timestamp}</p>
+                             <p>시간: <br/>{data.timestamp.includes('(일)') ?
+                                 <span style={{ color: 'red' }}>{data.timestamp}</span> :
+                                 data.timestamp}</p>
                               <p>온도: {data.temperature}℃</p>
                               <p>최저 기온: {data.minTemperature}℃</p>
                               <p>최고 기온: {data.maxTemperature}℃</p>
