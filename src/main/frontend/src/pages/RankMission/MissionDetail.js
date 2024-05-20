@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Layout from '../../Layout';
 import '../../css/VerificationCodeInput.css';
 import img1 from '../../missionimg/1.png';
 import img2 from '../../missionimg/2.png';
@@ -139,6 +140,7 @@ const MissionDetail = () => {
   }
 
   return (
+  <Layout>
     <div>
       <h1 className="my-4">미션 상세페이지</h1>
       {error && (
@@ -193,6 +195,7 @@ const MissionDetail = () => {
         <div>Mission not found</div>
       )}
     </div>
+    </Layout>
   );
 };
 

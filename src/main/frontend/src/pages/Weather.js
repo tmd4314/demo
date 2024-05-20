@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import  '../css/weather.css';
+import Layout from '../Layout';
 import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
 
 function Weather() {
@@ -54,6 +55,7 @@ function Weather() {
        if (!weatherData) return null;
 
   return (
+  <Layout>
     <div className="container-fluid">
       <h1 className="mt-4">홈페이지</h1>
         <h3>한라산 날씨</h3>
@@ -82,6 +84,7 @@ function Weather() {
                       ))}
         </div>
     </div>
+    </Layout>
   );
 }
 

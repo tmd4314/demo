@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Layout from '../Layout';
 
 function MyPageUpdate() {
   const [userInfo, setUserInfo] = useState({
@@ -28,6 +29,7 @@ function MyPageUpdate() {
   };
 
   return (
+  <Layout>
     <div>
       <h2>회원 정보 수정</h2>
       <label>Username:</label>
@@ -40,6 +42,7 @@ function MyPageUpdate() {
       <input type="text" name="phone" value={userInfo.phone} onChange={handleInputChange} />
       <button onClick={handleUpdateUser}>저장</button>
     </div>
+    </Layout>
   );
 }
 

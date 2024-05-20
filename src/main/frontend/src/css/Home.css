@@ -118,4 +118,14 @@
   bottom: 10px;
   left: 12px;
 }
+.carousel-container {
+  width: 100%; /* 너비를 100%로 설정 */
+  max-width: 1300px; /* 최대 너비를 1200px로 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+}
 
+.carousel-item img {
+  width: 100%; /* 이미지 너비를 부모 요소에 맞춤 */
+  height: 250px; /* 높이를 300px로 설정 */
+  object-fit: cover; /* 이미지 비율 유지하면서 영역에 맞게 자름 */
+}

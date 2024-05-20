@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ConfirmationModal from '../ConfirmationModal';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../Layout';
 
 function MyPageDelete() {
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,7 @@ function MyPageDelete() {
   };
 
   return (
+  <Layout>
     <div>
       <h2>회원 탈퇴</h2>
       <button onClick={() => setShowModal(true)}>회원 탈퇴</button>
@@ -33,6 +35,7 @@ function MyPageDelete() {
         handleConfirm={handleConfirmDelete}
       />
     </div>
+    </Layout>
   );
 }
 

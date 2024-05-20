@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
+import Layout from '../Layout';
 
 import '../css/Signup.css';
 
@@ -77,6 +78,7 @@ function Signup() {
   };
 
   return (
+  <Layout>
     <div>
       <h2 className="my-4">회원가입</h2>
       {errorMessage && (
@@ -121,6 +123,7 @@ function Signup() {
         </Button>
       </Form>
     </div>
+    </Layout>
   );
 }
 

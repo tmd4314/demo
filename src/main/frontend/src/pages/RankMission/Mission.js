@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // react-router-dom의 Link 및 useNavigate 사용
 import axios from 'axios';
+import Layout from '../../Layout';
 
 const MissionBoard = () => {
   const [missions, setMissions] = useState([]);
@@ -20,6 +21,7 @@ const MissionBoard = () => {
   }, []);
 
   return (
+  <Layout>
     <div>
       <h1 className="my-4">미션 게시판</h1>
       <table className="table">
@@ -45,6 +47,7 @@ const MissionBoard = () => {
         </tbody>
       </table>
     </div>
+    </Layout>
   );
 };
 

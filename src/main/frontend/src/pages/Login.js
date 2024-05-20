@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Layout from '../Layout';
 
 import '../css/Login.css';
 
@@ -49,6 +50,7 @@ function Login() {
   };
 
   return (
+  <Layout>
     <div className="container my-3">
       <form onSubmit={handleSubmit}>
         {error && (
@@ -74,6 +76,7 @@ function Login() {
         </div>
       </form>
     </div>
+    </Layout>
   );
 }
 

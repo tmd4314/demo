@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container as MapDiv, useNavermaps } from 'react-naver-maps';
 import { Link } from 'react-router-dom';
+import Layout from '../../Layout';
 
 import '../../css/road.css';
 
@@ -112,6 +113,7 @@ const MapWithPanoramaAndRoute = () => {
     };
 
     return (
+    <Layout>
         <div>
             <div className='road-menu'>
                 <div className="road-menu-btn">
@@ -169,9 +171,10 @@ const MapWithPanoramaAndRoute = () => {
                 <br/><br/>교 통 : 제주시 시외버스터미널에서 중문방면(1100도로) 시외버스 240번 이용(50분)
                 <br/><br/>영실매표소에서 내려 40분쯤 걸으면 영실 등산로 입구가 있다.
                 <br/><br/>대중교통 240번 버스운영 시간 -> 제주버스정보시스템 http://bus.jeju.go.kr/ 을 통해 쉽게 알아 볼 수 있다.
-                <br/><br/>기타 문의 : 한라산국립공원관리소 064)713-9950~1 / 영실지소 064)747-9950</p>
+                <br/><br/>기타 문의 : 한라산국립공원관리소 (064)713-9950~1 / 영실지소 (064)747-9950</p>
             </div>      
         </div>
+        </Layout>
     );
 };
 

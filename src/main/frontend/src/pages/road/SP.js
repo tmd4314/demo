@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container as MapDiv, useNavermaps } from 'react-naver-maps';
 import { Link } from 'react-router-dom';
-
+import Layout from '../../Layout';
 import '../../css/road.css';
 
 const MapWithPanoramaAndRoute = () => {
@@ -111,6 +111,7 @@ const MapWithPanoramaAndRoute = () => {
     };
 
     return (
+    <Layout>
         <div>
             <div className='road-menu'>
                 <div className="road-menu-btn">
@@ -170,11 +171,10 @@ const MapWithPanoramaAndRoute = () => {
                 <br/><br/>화 장 실 : 성판악사무실, 속밭대피소, 진달래밭대피소
                 <br/><br/>교     통 : 제주시 시외버스터미널에서 서귀포 방면(516도로-간선281/ 직행181) 시외버스 이용(40분) 입구에서 내려 2분쯤 걸으면 성판악 탐방로가 있다. 성판악탐방로는 주차장이 협소하여 성수기에는 탐방시간 시작 전에 만차가 되는 경우가 많으므로 반드시 대중교통을 이용하여 주시기 바랍니다.
                 <br/><br/>대중교통 281번, 181번 버스운영 시간 -> 제주버스정보시스템 http://bus.jeju.go.kr/ 을 통해 쉽게 알아 볼 수 있다.
-                <br/><br/>기타 문의 : 한라산국립공원관리소  064)713-9950~1 / 성판악지소  064)725-9950</p>
+                <br/><br/>기타 문의 : 한라산국립공원관리소  (064)713-9950~1 / 성판악지소  (064)725-9950</p>
             </div>
-
-                        
         </div>
+        </Layout>
     );
 };
 

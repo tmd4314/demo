@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Layout from '../../Layout';
 
 
 const RankingBoard = () => {
@@ -20,6 +21,7 @@ const RankingBoard = () => {
 
 
   return (
+  <Layout>
     <div>
       <h1 className="my-4">랭킹 게시판</h1>
       <table className="table">
@@ -43,6 +45,7 @@ const RankingBoard = () => {
         </tbody>
       </table>
     </div>
+    </Layout>
   );
 };
 
