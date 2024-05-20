@@ -24,6 +24,9 @@ function HomePage() {
   const [error, setError] = useState(null);
   const [currentTime, setCurrentTime] = useState('');
   const navigate = useNavigate();
+//  제주 날시
+  const [otherWeatherInfo, setOtherWeatherInfo] = useState(null);
+  const [otherCurrentTime, setOtherCurrentTime] = useState(null);
 
   const handleMouseOver = (photo) => {
     setCurrentPhoto(photo);
@@ -52,8 +55,24 @@ function HomePage() {
     }
   };
 
+  const getOtherWeatherInfo = async () => {
+      try {
+        const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=33.499157&lon=126.531138&appid=5f5fe71124b23c5deb3f48c70c686d1c&lang=kr&units=metric');
+        const timeResponse = await axios.get('http://worldtimeapi.org/api/timezone/Asia/Seoul');
+        const dateTime = new Date(timeResponse.data.datetime);
+        const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+        const formattedTime = `${dateTime.getMonth() + 1}월-${dateTime.getDate()}일 (${days[dateTime.getDay()]})
+                                \n${dateTime.getHours()}시-${dateTime.getMinutes()}분`;
+        setOtherCurrentTime(formattedTime);
+        setOtherWeatherInfo(response.data);
+      } catch (error) {
+        console.error('Error while fetching other weather data:', error);
+      }
+    };
+
   useEffect(() => {
     getWeatherInfo();
+    getOtherWeatherInfo();
   }, []);
 
   return (
@@ -121,6 +140,7 @@ function HomePage() {
       </div>
 
   <div className="weather-box" onClick={() => navigate('/user/weather')}>
+    <div className="left-weather">
       <div className="weather-icon">
         {weatherInfo ? (
           <>
@@ -145,6 +165,39 @@ function HomePage() {
           <p>현재 시간: {currentTime}</p>
         </div>
       </div>
+    </div>
+    <div className="right-weather">
+      {otherWeatherInfo ? (
+        <>
+          <div className="weather-icon">
+                  {weatherInfo ? (
+                    <>
+                      {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={125} color='#f00' />}
+                      {weatherInfo.weather[0].description === "Rain" && <WiRain size={125} color='#0080ff' />}
+                      {weatherInfo.weather[0].description === "Snow" && <WiSnow size={125} color='#0080ff' />}
+                      {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={125} color='#0080ff' />}
+                      {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={125} color='#0080ff' />}
+                      {weatherInfo.weather[0].description === "Mist" && <WiFog size={125} color='#0080ff' />}
+                      {weatherInfo.weather[0].description === "Fog" && <WiFog size={125} color='#0080ff' />}
+                    </>
+                  ) : (
+                    <p>정보 불러오는 중...</p>
+                  )}
+          </div>
+          <div className="weather-info">
+            <p style={{ fontSize: '40px' }}> {otherWeatherInfo && otherWeatherInfo.main.temp}°C</p>
+            <div className="weather-details">
+              <p>지역: {otherWeatherInfo && otherWeatherInfo.name}</p>
+              <p>처저 기온: {otherWeatherInfo && otherWeatherInfo.main.temp_min}°C</p>
+              <p>최고 기온: {otherWeatherInfo && otherWeatherInfo.main.temp_max}°C</p>
+              <p>현재 시간: {otherCurrentTime}</p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <p>정보 불러오는 중...</p>
+      )}
+        </div>
     </div>
     </Layout>
   );
