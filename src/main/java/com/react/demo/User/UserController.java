@@ -75,7 +75,7 @@ public class UserController {
 
     @GetMapping("/login")
     public ResponseEntity<String> login() {
-        return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/").build();
+        return ResponseEntity.ok("login");
     }
 
     @PostMapping("/login")

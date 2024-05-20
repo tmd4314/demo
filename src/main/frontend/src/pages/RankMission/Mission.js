@@ -36,7 +36,7 @@ const MissionBoard = () => {
               <td>{mission.route}</td>
               <td>{mission.point}</td>
               <td>
-                <Link to={`/user/mission/${mission.id}`}>
+                <Link to={`/user/missions/${mission.id}`}> // mission id 값까지 같이 넘겨줌
                   <button className="btn btn-primary">도전하기</button>
                 </Link>
               </td>

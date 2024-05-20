@@ -42,7 +42,7 @@ function App() {
               <Route exact path="/user/as" element={<AS />} />
               <Route exact path="/user/missions" element={<Mission />}/>
               <Route exact path="/user/rank" element={<Rank />}/>
-              <Route exact path="/user/mission/:missionId" element={<MissionDetail />}/>
+              <Route exact path="/user/missions/:missionId" element={<MissionDetail />}/> //mission id 값까지 같이 넘겨줌
             </Routes>
           </Container>
         </div>
