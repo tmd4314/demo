@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; // React Router의 Link를 가져옵니다.
 import axios from 'axios';
+import logo from '../img/barlogo.png';
 
 import '../css/App.css';
 
@@ -48,7 +49,9 @@ function NavbarComponent() {
     <div className='header'>
       <Navbar expand="lg" className="bg-body-tertiary border-bottom">
         <Container fluid>
-          <Navbar.Brand href="/">봉우리 원정대</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img src={logo} className="logo-image" /> 봉우리 원정대
+          </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="navbarSupportedContent" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

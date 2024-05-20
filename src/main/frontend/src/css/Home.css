@@ -25,6 +25,7 @@
 .trail-name-box p {
   text-align: center;
   margin-top: 50px;
+  font-size: 30px;
 }
 
 .trail-name {
@@ -64,6 +65,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#notion {
+    font-size: 14px;
+    text-align: right;
+    margin-right: 50px;
 }
 
 /* 버튼 */
@@ -130,6 +137,11 @@
   object-fit: cover; /* 이미지 비율 유지하면서 영역에 맞게 자름 */
 }
 
+.weather {
+    display: flex;
+
+}
+
 .weather-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -143,6 +155,14 @@
   width: 100%;
   max-width: 1300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#left-weather {
+  margin-right: 10px; /* 오른쪽에 10px의 마진 추가 */
+}
+
+#right-weather {
+  margin-left: 10px; /* 왼쪽에 10px의 마진 추가 */
 }
 
 .weather-details {

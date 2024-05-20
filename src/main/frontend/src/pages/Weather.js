@@ -147,7 +147,7 @@ const Weather = () => {
             </div>
             <div className="detail-buttons">
                 <button onClick={() => handleDetailChange('temperature')}>날씨</button>
-                <button onClick={() => handleDetailChange('precipitation')}>강수</button>
+                <button onClick={() => handleDetailChange('precipitation')}>강수 확률</button>
                 <button onClick={() => handleDetailChange('humidity')}>습도</button>
             </div>
             <div className="future-weather">

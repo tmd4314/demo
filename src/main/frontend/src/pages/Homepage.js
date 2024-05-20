@@ -131,6 +131,7 @@ function HomePage() {
             </Link>
           </div>
           <img src={logo} alt="logo" id="logo" />
+          <p id='notion'>상세페이지를 보시려면 등산로 이름을 눌러주세요</p>
         </div>
         <div className="trail-photo-box">
           <div className="trail-photo">
@@ -139,8 +140,8 @@ function HomePage() {
         </div>
       </div>
 
-  <div className="weather-box" onClick={() => navigate('/user/weather')}>
-    <div className="left-weather">
+  <div className="weather" onClick={() => navigate('/user/weather')}>
+    <div className="weather-box" id="left-weather">
       <div className="weather-icon">
         {weatherInfo ? (
           <>
@@ -166,7 +167,7 @@ function HomePage() {
         </div>
       </div>
     </div>
-    <div className="right-weather">
+    <div className="weather-box" id="right-weather">
       {otherWeatherInfo ? (
         <>
           <div className="weather-icon">
@@ -198,7 +199,7 @@ function HomePage() {
         <p>정보 불러오는 중...</p>
       )}
         </div>
-    </div>
+  </div>
     </Layout>
   );
 }

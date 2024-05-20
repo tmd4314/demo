@@ -1,0 +1,8 @@
+.urls li a {
+  font-size: 25px; /* 원하는 크기로 설정 */
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.menu-title {
+  font-size: 30px; /* 원하는 폰트 크기로 설정 */
+}

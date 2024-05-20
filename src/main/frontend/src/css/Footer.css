@@ -1,0 +1,12 @@
+.footer {
+  background-color: #c4db78 ; /* 원하는 배경색으로 변경 */
+  color: #00000; /* 텍스트 색상 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  padding: 10px 0px; /* 패딩 추가 */
+  position: relative; /* 푸터를 하단에 고정 */
+  bottom: 0;
+  width: 100%;
+}
+.flag{
+width: 35px;
+}

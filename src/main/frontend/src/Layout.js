@@ -1,7 +1,7 @@
 // src/components/Layout.js
 import React from 'react';
 import Footer from './pages/Footer';
-//import '../css/Layout.css';
+import './css/Layout.css';
 
 function Layout({ children }) {
   return (

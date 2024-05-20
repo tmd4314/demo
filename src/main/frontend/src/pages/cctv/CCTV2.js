@@ -1,10 +1,7 @@
-// CCTV.js
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'video.js/dist/video-js.css';
-//import './css/video-js.css';
-//import './css/cctv.css';
+import '../../css/CCTV.css';
 import Hls from 'hls.js';
+import Layout from '../../Layout';
 
 const CCTV2 = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -30,6 +27,7 @@ const CCTV2 = () => {
   };
 
   return (
+  <Layout>
     <div className="container">
       <div className="row">
         <div className="col-sm-3">
@@ -61,6 +59,7 @@ const CCTV2 = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 
