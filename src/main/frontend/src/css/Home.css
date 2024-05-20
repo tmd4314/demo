@@ -146,12 +146,17 @@
 }
 
 .weather-details {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .weather-details p {
   margin: 5px 0;
+  text-align: right;
 }
+
 
 .weather-icon {
   margin-right: 20px;
