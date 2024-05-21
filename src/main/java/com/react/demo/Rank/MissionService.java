@@ -75,14 +75,9 @@ public class MissionService {
         Ranking ranking = rankingRepository.findByUserId(userId).orElse(new Ranking());
         ranking.setUserId(userId);
         ranking.setTotalPoint(ranking.getTotalPoint() + points);
-        rankingRepository.save(ranking);
+        ranking = rankingRepository.save(ranking); // 엔티티를 저장하고 반환된 엔티티를 사용
 
-        List<Ranking> allRankings = rankingRepository.findAllByOrderByTotalPointDesc();
-
-        int rank = 1;
-        for (Ranking r : allRankings) {
-            r.setNo((long) rank++);
-            rankingRepository.save(r);
-        }
+        // 순위를 다시 계산하고 저장할 필요가 없음
     }
+
 }

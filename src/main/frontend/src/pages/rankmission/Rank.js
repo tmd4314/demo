@@ -12,7 +12,8 @@ const RankingBoard = () => {
     const fetchRank = async () => {
       try {
         const response = await axios.get(`/user/ranking?page=${page}&pageSize=${pageSize}&searchTerm=${searchTerm}`);
-        setRanking(response.data.content); // 백엔드로부터 받아온 데이터의 content 프로퍼티를 설정
+        const sortedRanking = response.data.content.sort((a, b) => b.totalPoint - a.totalPoint); // 총점수가 높은 순으로 정렬
+        setRanking(sortedRanking); // 정렬된 데이터를 설정
       } catch (error) {
         console.error('Error fetching Rank:', error);
       }

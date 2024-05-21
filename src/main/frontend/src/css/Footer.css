@@ -6,6 +6,7 @@
   position: relative; /* 푸터를 하단에 고정 */
   bottom: 0;
   width: 100%;
+  margin-top: 20px;
 }
 .flag{
 width: 35px;
