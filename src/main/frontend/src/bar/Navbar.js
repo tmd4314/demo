@@ -38,7 +38,7 @@ function NavbarComponent() {
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('userid');
         localStorage.removeItem('username');
-        window.location.reload();
+        window.location.href = '/';
       })
       .catch(error => {
         console.error('Logout failed:', error);
@@ -61,7 +61,7 @@ function NavbarComponent() {
         localStorage.removeItem('userid');
         localStorage.removeItem('username');
         setIsAuthenticated(false);
-        window.location.reload();
+        window.location.href = '/';
       })
       .catch(error => {
         setMessage('회원 탈퇴에 실패했습니다.');
