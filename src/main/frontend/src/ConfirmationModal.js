@@ -1,13 +1,22 @@
-//회원 탈퇴 선택 시 회원 탈퇴가 확실한지 여부 확인 체크
 import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 function ConfirmationModal({ show, handleClose, handleConfirm }) {
   return (
-    <div className={show ? "confirmation-modal" : "confirmation-modal hidden"}>
-      <p>정말로 회원을 탈퇴하시겠습니까?</p>
-      <button onClick={handleConfirm}>확인</button>
-      <button onClick={handleClose}>취소</button>
-    </div>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Confirm Action</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>회원탈퇴를 하시겠습니까?</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Cancel
+        </Button>
+        <Button variant="danger" onClick={handleConfirm}>
+          Confirm
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
 

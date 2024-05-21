@@ -22,6 +22,7 @@ import CCTV1 from './pages/cctv/CCTV1';
 import CCTV2 from './pages/cctv/CCTV2';
 import CCTV3 from './pages/cctv/CCTV3';
 import CCTV4 from './pages/cctv/CCTV4';
+import Mypage from './pages/Mypage';
 
 
 
@@ -51,6 +52,7 @@ function App() {
               <Route exact path="/user/cctv2" element={<CCTV2 />}/>
               <Route exact path="/user/cctv3" element={<CCTV3 />}/>
               <Route exact path="/user/cctv4" element={<CCTV4 />}/>
+              <Route exact path="/mypage" element={<Mypage />}/>
             </Routes>
           </Container>
         </div>

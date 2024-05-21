@@ -3,6 +3,7 @@ package com.react.demo.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
 
@@ -75,7 +77,7 @@ public class UserController {
 
     @GetMapping("/login")
     public ResponseEntity<String> login() {
-        return ResponseEntity.ok("login");
+        return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/").build();
     }
 
     @PostMapping("/login")
@@ -110,6 +112,54 @@ public class UserController {
     public ResponseEntity<String> logout() {
         return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/").build();
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<String> deleteUser(@RequestBody UserDeleteRequest request) {
+        try {
+            boolean deleted = userService.deleteUser(request.getUserid()); // userId -> userid로 수정
+            if (deleted) {
+                // 사용자 삭제 후에 로깅을 추가하여 어떤 사용자가 삭제되었는지 확인할 수 있도록 합니다.
+                System.out.println("User with userId " + request.getUserid() + " deleted successfully."); // userId -> userid로 수정
+                return ResponseEntity.ok("사용자가 성공적으로 삭제되었습니다.");
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("사용자 삭제 중 오류가 발생했습니다.");
+            }
+        } catch (EmptyResultDataAccessException e) {
+            // 사용자가 존재하지 않는 경우
+            System.err.println("User with userId " + request.getUserid() + " not found."); // userId -> userid로 수정
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자가 존재하지 않습니다.");
+        } catch (Exception e) {
+            // 삭제 중 다른 예외가 발생한 경우
+            System.err.println("Error deleting user with userId " + request.getUserid() + ": " + e.getMessage()); // userId -> userid로 수정
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("사용자 삭제 중 오류가 발생했습니다.");
+        }
+    }
+
+    @PutMapping("/update/username")
+    public ResponseEntity<String> updateUsername(@RequestBody UserUpdateRequest request) {
+        userService.updateUsername(request.getUserid(), request.getUsername());
+        return ResponseEntity.status(HttpStatus.OK).body("Username updated successfully.");
+    }
+
+    @PutMapping("/update/email")
+    public ResponseEntity<String> updateEmail(@RequestBody UserUpdateRequest request) {
+        userService.updateEmail(request.getUserid(), request.getEmail());
+        return ResponseEntity.status(HttpStatus.OK).body("Email updated successfully.");
+    }
+
+    @PutMapping("/update/phoneNumber")
+    public ResponseEntity<String> updatePhoneNumber(@RequestBody UserUpdateRequest request) {
+        userService.updatePhoneNumber(request.getUserid(), request.getPhoneNumber());
+        return ResponseEntity.status(HttpStatus.OK).body("Phone number updated successfully.");
+    }
+
+    @PutMapping("/update/password")
+    public ResponseEntity<String> updatePassword(@RequestBody UserUpdateRequest request) {
+        userService.updatePassword(request.getUserid(), request.getPassword());
+        return ResponseEntity.status(HttpStatus.OK).body("Password updated successfully.");
+    }
+
 
 }
 
