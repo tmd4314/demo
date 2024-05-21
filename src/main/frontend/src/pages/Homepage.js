@@ -14,7 +14,7 @@ import banner2 from '../img/메인배너2.jpg';
 import banner3 from '../img/메인배너3.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog, WiCloud } from 'weather-icons-react';
+import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog, WiCloud} from 'weather-icons-react';
 import Carousel from 'react-bootstrap/Carousel';
 import Layout from '../Layout';
 
@@ -52,6 +52,7 @@ function HomePage() {
 
         setCurrentTime(formattedTime);
         setWeatherInfo(response.data);
+        console.log(response.data);
     } catch (error) {
       console.error('Error while fetching weather data:', error);
     }
@@ -147,24 +148,23 @@ function HomePage() {
       <div className="weather-icon">
         {weatherInfo ? (
           <>
-            {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={125} color='#f00' />}
-            {weatherInfo.weather[0].description === "Rain" && <WiRain size={125} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "Snow" && <WiSnow size={125} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={125} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={125} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={125} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "Mist" && <WiFog size={125} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "Fog" && <WiFog size={125} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={185} color='#f00' />}
+            {weatherInfo.weather[0].description === "Rain" && <WiRain size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "Snow" && <WiSnow size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "튼구름" && <WiCloudy size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "Mist" && <WiFog size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "Fog" && <WiFog size={185} color='#0080ff' />}
           </>
         ) : (
           <p>정보 불러오는 중...</p>
         )}
       </div>
         <div className="weather-details">
-        <p style={{ fontSize: '40px' }}> {weatherInfo && weatherInfo.main.temp}°C</p>
+        <p style={{ fontSize: '80px' }}> {weatherInfo && weatherInfo.main.temp}°C</p>
           <p>지역: 한라산 정상</p>
-          <p>처저 기온: {weatherInfo && weatherInfo.main.temp_min}°C</p>
-          <p>최고 기온: {weatherInfo && weatherInfo.main.temp_max}°C</p>
           <p>현재 시간: {currentTime}</p>
         </div>
     </div>
@@ -174,14 +174,15 @@ function HomePage() {
           <div className="weather-icon">
               {weatherInfo ? (
                 <>
-                  {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={125} color='#f00' />}
-                  {weatherInfo.weather[0].description === "Rain" && <WiRain size={125} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "Snow" && <WiSnow size={125} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={125} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={125} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={125} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "Mist" && <WiFog size={125} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "Fog" && <WiFog size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={185} color='#f00' />}
+                  {weatherInfo.weather[0].description === "Rain" && <WiRain size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Snow" && <WiSnow size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "튼구름" && <WiCloudy size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Mist" && <WiFog size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Fog" && <WiFog size={185} color='#0080ff' />}
                 </>
               ) : (
                 <p>정보 불러오는 중...</p>
@@ -190,10 +191,8 @@ function HomePage() {
 
 
             <div className="weather-details">
-            <p style={{ fontSize: '40px' }}> {otherWeatherInfo && otherWeatherInfo.main.temp}°C</p>
+            <p style={{ fontSize: '80px' }}> {otherWeatherInfo && otherWeatherInfo.main.temp}°C</p>
               <p>지역: 제주도</p>
-              <p>처저 기온: {otherWeatherInfo && otherWeatherInfo.main.temp_min}°C</p>
-              <p>최고 기온: {otherWeatherInfo && otherWeatherInfo.main.temp_max}°C</p>
               <p>현재 시간: {otherCurrentTime}</p>
             </div>
 
