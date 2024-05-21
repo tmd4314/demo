@@ -10889,5 +10889,12 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 }
 
 .logo-image{
-width: 20px;
+    width: 20px;
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.brand-name{
+    font-size: 17px;
+    color: black;
+    text-decoration: none; /* 밑줄 제거 */
 }

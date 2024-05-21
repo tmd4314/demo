@@ -14,7 +14,7 @@ import banner2 from '../img/메인배너2.jpg';
 import banner3 from '../img/메인배너3.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog } from 'weather-icons-react';
+import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm, WiFog, WiCloud } from 'weather-icons-react';
 import Carousel from 'react-bootstrap/Carousel';
 import Layout from '../Layout';
 
@@ -25,8 +25,8 @@ function HomePage() {
   const [currentTime, setCurrentTime] = useState('');
   const navigate = useNavigate();
 //  제주 날시
-  const [otherWeatherInfo, setOtherWeatherInfo] = useState(null);
-  const [otherCurrentTime, setOtherCurrentTime] = useState(null);
+  const [otherWeatherInfo, setOtherWeatherInfo] = useState('');
+  const [otherCurrentTime, setOtherCurrentTime] = useState('');
 
   const handleMouseOver = (photo) => {
     setCurrentPhoto(photo);
@@ -40,15 +40,17 @@ function HomePage() {
       try {
         // GET 요청 보내기
        const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=33.360949&lon=126.529803&appid=5f5fe71124b23c5deb3f48c70c686d1c&lang=kr&units=metric');
+
        const timeResponse = await axios.get(
                'http://worldtimeapi.org/api/timezone/Asia/Seoul'
              );
        const dateTime = new Date(timeResponse.data.datetime);
         // 받은 데이터 설정
         const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-              const formattedTime = `${dateTime.getMonth() + 1}월-${dateTime.getDate()}일 (${days[dateTime.getDay()]})
-                                            \n${dateTime.getHours()}시-${dateTime.getMinutes()}분`;
-              setCurrentTime(formattedTime);
+        const formattedTime = `${dateTime.getMonth() + 1}월-${dateTime.getDate()}일 (${days[dateTime.getDay()]})
+                                        \n${dateTime.getHours()}시-${dateTime.getMinutes()}분`;
+
+        setCurrentTime(formattedTime);
         setWeatherInfo(response.data);
     } catch (error) {
       console.error('Error while fetching weather data:', error);
@@ -149,6 +151,7 @@ function HomePage() {
             {weatherInfo.weather[0].description === "Rain" && <WiRain size={125} color='#0080ff' />}
             {weatherInfo.weather[0].description === "Snow" && <WiSnow size={125} color='#0080ff' />}
             {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={125} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={125} color='#0080ff' />}
             {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={125} color='#0080ff' />}
             {weatherInfo.weather[0].description === "Mist" && <WiFog size={125} color='#0080ff' />}
             {weatherInfo.weather[0].description === "Fog" && <WiFog size={125} color='#0080ff' />}
@@ -169,19 +172,20 @@ function HomePage() {
       {otherWeatherInfo ? (
         <>
           <div className="weather-icon">
-                  {weatherInfo ? (
-                    <>
-                      {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={125} color='#f00' />}
-                      {weatherInfo.weather[0].description === "Rain" && <WiRain size={125} color='#0080ff' />}
-                      {weatherInfo.weather[0].description === "Snow" && <WiSnow size={125} color='#0080ff' />}
-                      {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={125} color='#0080ff' />}
-                      {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={125} color='#0080ff' />}
-                      {weatherInfo.weather[0].description === "Mist" && <WiFog size={125} color='#0080ff' />}
-                      {weatherInfo.weather[0].description === "Fog" && <WiFog size={125} color='#0080ff' />}
-                    </>
-                  ) : (
-                    <p>정보 불러오는 중...</p>
-                  )}
+              {weatherInfo ? (
+                <>
+                  {weatherInfo.weather[0].description === "맑음" && <WiDaySunny size={125} color='#f00' />}
+                  {weatherInfo.weather[0].description === "Rain" && <WiRain size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Snow" && <WiSnow size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Mist" && <WiFog size={125} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "Fog" && <WiFog size={125} color='#0080ff' />}
+                </>
+              ) : (
+                <p>정보 불러오는 중...</p>
+              )}
           </div>
 
 

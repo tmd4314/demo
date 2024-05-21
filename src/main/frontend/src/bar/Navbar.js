@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ConfirmationModal from '../ConfirmationModal';
+import logo from '../img/barlogo.png';
 
 import '../css/App.css';
 
@@ -74,7 +75,14 @@ function NavbarComponent() {
     <div className='header'>
       <Navbar expand="lg" className="bg-body-tertiary border-bottom">
         <Container fluid>
-          <Navbar.Brand href="/">봉우리 원정대</Navbar.Brand>
+           <Navbar.Brand>
+             <Link to="/">
+               <img src={logo} className="logo-image" alt="Logo" />
+             </Link>
+             <Link to="/" className="brand-name">
+                봉우리 원정대
+             </Link>
+           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarSupportedContent" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
