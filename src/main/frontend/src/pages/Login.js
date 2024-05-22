@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Layout from '../Layout';
 
-import '../css/Login.css';
+import '../css/user.css';
 
 function Login() {
   const [formData, setFormData] = useState({

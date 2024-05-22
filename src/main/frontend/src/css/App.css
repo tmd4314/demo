@@ -3260,7 +3260,7 @@ textarea.form-control-lg {
 }
 .dropdown-menu[data-bs-popper] {
   top: 100%;
-  left: 0;
+  right: 0;
   margin-top: var(--bs-dropdown-spacer);
 }
 
@@ -3411,6 +3411,7 @@ textarea.form-control-lg {
   margin-top: 0;
   margin-right: var(--bs-dropdown-spacer);
 }
+
 .dropstart .dropdown-toggle::after {
   display: inline-block;
   margin-left: 0.255em;
@@ -3451,7 +3452,7 @@ textarea.form-control-lg {
   clear: both;
   font-weight: 400;
   color: var(--bs-dropdown-link-color);
-  text-align: inherit;
+  text-align: center;
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
@@ -10888,13 +10889,18 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   margin: 10px;
 }
 
-.logo-image{
-    width: 20px;
-    text-decoration: none; /* 밑줄 제거 */
+.logo-image {
+  width: 20px;
+  margin-right: 10px;
+  text-decoration: none;
 }
 
-.brand-name{
-    font-size: 17px;
-    color: black;
-    text-decoration: none; /* 밑줄 제거 */
+.brand-name {
+  font-size: 17px;
+  color: black;
+  text-decoration: none;
+}
+
+.brand-name:hover {
+  color: #000;
 }

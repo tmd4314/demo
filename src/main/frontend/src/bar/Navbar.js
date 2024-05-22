@@ -92,11 +92,11 @@ function NavbarComponent() {
                   <Link to="/user/cctv1" className="nav-link" onClick={closeNavbar}>CCTV</Link>
                   <Link to="/user/rank" className="nav-link" onClick={closeNavbar}>랭킹</Link>
                   <Link to="/user/missions" className="nav-link" onClick={closeNavbar}>미션</Link>
+                  <Link to="/user/market" className="nav-link" onClick={closeNavbar}>마켓</Link>
                   <NavDropdown title={username} id="basic-nav-dropdown">
                     <Link to="/mypage" className="dropdown-item" onClick={closeNavbar}>회원 수정</Link>
-                    <NavDropdown.Item onClick={handleDeleteClick}>회원 탈퇴</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
+                    <Link className="dropdown-item" onClick={handleDeleteClick}>회원 탈퇴</Link>
+                    <Link className="dropdown-item" onClick={handleLogout}>로그아웃</Link>
                   </NavDropdown>
                 </>
               ) : (
