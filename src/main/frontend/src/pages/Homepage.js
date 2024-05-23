@@ -155,8 +155,8 @@ function HomePage() {
             {weatherInfo.weather[0].description === "튼구름" && <WiCloudy size={185} color='#0080ff' />}
             {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={185} color='#0080ff' />}
             {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={185} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "Mist" && <WiFog size={185} color='#0080ff' />}
-            {weatherInfo.weather[0].description === "Fog" && <WiFog size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "박무" && <WiFog size={185} color='#0080ff' />}
+            {weatherInfo.weather[0].description === "안개" && <WiFog size={185} color='#0080ff' />}
           </>
         ) : (
           <p>정보 불러오는 중...</p>
@@ -181,8 +181,8 @@ function HomePage() {
                   {weatherInfo.weather[0].description === "온흐림" && <WiCloudy size={185} color='#0080ff' />}
                   {weatherInfo.weather[0].description === "약간의 구름이 낀 하늘" && <WiCloud size={185} color='#0080ff' />}
                   {weatherInfo.weather[0].description === "Thunderstorm" && <WiThunderstorm size={185} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "Mist" && <WiFog size={185} color='#0080ff' />}
-                  {weatherInfo.weather[0].description === "Fog" && <WiFog size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "박무" && <WiFog size={185} color='#0080ff' />}
+                  {weatherInfo.weather[0].description === "안개" && <WiFog size={185} color='#0080ff' />}
                 </>
               ) : (
                 <p>정보 불러오는 중...</p>
